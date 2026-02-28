@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Álvaro · Nutrición</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0D1119;
+    --surface:   #1E202D;
+    --surface2:  #252837;
+    --surface3:  #2e3144;
+
+    --lavender:  #9C98F6;
+    --salmon:    #F29DA2;
+    --lime:      #E8FCBF;
+    --lime-dark: #c8f135;
+
+    --text:      #F4F5FC;
+    --text2:     #9095b0;
+    --muted:     #555a72;
+    --border:    rgba(255,255,255,.06);
+
+    --elements:  #9C98F6;
+    --hyrox:     #F29DA2;
+    --descanso:  #E8FCBF;
+
+    --shadow: 0 4px 24px rgba(0,0,0,.4);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,17,25,.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -.3px; }
+  .logo span { color: var(--lavender); }
+
+  .week-pill {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--lime);
+    color: #1a1d2e;
+    font-family: inherit; font-size: 12px; font-weight: 700;
+    padding: 8px 16px; border-radius: 100px; border: none;
+    cursor: pointer; transition: filter .15s;
+  }
+  .week-pill:active { filter: brightness(.92); }
+
+  /* ── Nav ── */
+  nav {
+    display: flex;
+    background: rgba(13,17,25,.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 12px;
+    gap: 6px;
+  }
+  .tab {
+    flex: 1; background: none; border: none;
+    border-radius: 12px;
+    color: var(--text2);
+    font-family: inherit; font-size: 13px; font-weight: 600;
+    padding: 10px 10px; cursor: pointer; text-align: center;
+    transition: all .2s;
+  }
+  .tab.on {
+    background: var(--lime);
+    color: #1a1d2e;
+  }
+
+  /* ── Views ── */
+  .view { display: none; }
+  .view.on { display: block; }
+  #v-semana, #v-compra, #v-info { padding: 20px 16px 100px; }
+
+  /* ── Section head ── */
+  .section-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .section-title { font-size: 24px; font-weight: 800; letter-spacing: -.5px; color: var(--text); }
+  .count-pill {
+    font-size: 12px; font-weight: 700;
+    background: var(--surface2); color: var(--text2);
+    padding: 6px 14px; border-radius: 100px;
+  }
+
+  /* ── Day card ── */
+  .day-card {
+    border-radius: 22px; margin-bottom: 12px;
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    animation: fadeUp .3s ease both;
+    transition: box-shadow .2s;
+  }
+  .day-card.open { box-shadow: 0 8px 40px rgba(0,0,0,.5); }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(10px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .day-card:nth-child(1){animation-delay:.03s} .day-card:nth-child(2){animation-delay:.06s}
+  .day-card:nth-child(3){animation-delay:.09s} .day-card:nth-child(4){animation-delay:.12s}
+  .day-card:nth-child(5){animation-delay:.15s} .day-card:nth-child(6){animation-delay:.18s}
+  .day-card:nth-child(7){animation-delay:.21s}
+
+  .day-band {
+    padding: 18px 20px 16px;
+    display: flex; align-items: flex-start; justify-content: space-between;
+    transition: background .3s;
+    position: relative;
+  }
+  .day-band.elements { background: var(--elements); }
+  .day-band.hyrox    { background: var(--hyrox); }
+  .day-band.descanso { background: var(--descanso); }
+
+  .band-left { display: flex; flex-direction: column; gap: 8px; }
+
+  .day-name {
+    font-size: 20px; font-weight: 800; letter-spacing: -.4px; line-height: 1;
+    color: #1a1d2e;
+  }
+
+  .type-pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-family: inherit; font-size: 11px; font-weight: 700;
+    padding: 5px 12px; border-radius: 100px; border: none;
+    cursor: pointer; transition: filter .15s;
+    background: rgba(255,255,255,.28); color: #1a1d2e;
+  }
+  .type-pill:active { filter: brightness(.9); }
+
+  .band-right { display: flex; align-items: center; gap: 10px; }
+
+  .kcal-block { text-align: right; }
+  .kcal-num {
+    font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1;
+    color: #1a1d2e;
+  }
+  .kcal-unit { font-size: 10px; font-weight: 600; color: rgba(26,29,46,.55); margin-top: 2px; }
+
+  .expand-btn {
+    background: rgba(0,0,0,.15);
+    border: none; width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: rgba(26,29,46,.7); transition: background .2s; flex-shrink:0;
+  }
+  .expand-btn:hover { background: rgba(0,0,0,.25); }
+  .expand-btn svg { transition: transform .3s; }
+  .day-card.open .expand-btn svg { transform: rotate(180deg); }
+
+  /* ── Day body ── */
+  .day-body { display: none; background: var(--surface); }
+  .day-card.open .day-body { display: block; }
+
+  .meal { padding: 14px 20px; border-bottom: 1px solid var(--border); }
+  .meal:last-child { border-bottom: none; }
+
+  .meal-label {
+    font-size: 10px; font-weight: 700; letter-spacing: .7px;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 10px;
+  }
+
+  .meal-item {
+    font-size: 13.5px; font-weight: 400; line-height: 1.55; color: var(--text2);
+    padding: 4px 0 4px 12px;
+    border-left: 2px solid var(--surface3);
+    margin-bottom: 4px;
+  }
+  .meal-item:last-child { margin-bottom: 0; }
+  .meal-item.libre {
+    color: var(--lime-dark); border-left-color: var(--lime-dark); font-weight: 600;
+  }
+  .meal-empty { font-size: 13px; color: var(--muted); font-style: italic; padding-left: 12px; }
+
+  /* ── Bottom sheet ── */
+  .overlay {
+    display: none; position: fixed; inset: 0; z-index: 500;
+    background: rgba(0,0,0,.6); backdrop-filter: blur(6px);
+  }
+  .overlay.open { display: flex; align-items: flex-end; }
+
+  .sheet {
+    width: 100%; background: var(--surface);
+    border-radius: 28px 28px 0 0;
+    padding: 0 0 52px;
+    transform: translateY(100%);
+    transition: transform .32s cubic-bezier(.32,1,.23,1);
+    box-shadow: 0 -12px 60px rgba(0,0,0,.6);
+  }
+  .overlay.open .sheet { transform: translateY(0); }
+
+  .sheet-handle-wrap { padding: 14px; display: flex; justify-content: center; }
+  .sheet-handle { width: 40px; height: 4px; background: var(--surface3); border-radius: 2px; }
+
+  .sheet-head { padding: 4px 22px 18px; border-bottom: 1px solid var(--border); }
+  .sheet-sublabel { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .5px; margin-bottom: 3px; }
+  .sheet-dayname  { font-size: 22px; font-weight: 800; letter-spacing: -.4px; color: var(--text); }
+
+  .sheet-options { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+
+  .sheet-opt {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 18px; border-radius: 18px; cursor: pointer;
+    background: var(--surface2);
+    border: 2px solid transparent;
+    transition: all .15s;
+  }
+  .sheet-opt:active { transform: scale(.98); }
+  .sheet-opt.selected.elements { border-color: var(--elements); background: rgba(156,152,246,.1); }
+  .sheet-opt.selected.hyrox    { border-color: var(--hyrox);    background: rgba(242,157,162,.1); }
+  .sheet-opt.selected.descanso { border-color: var(--descanso); background: rgba(232,252,191,.08); }
+
+  .s-swatch {
+    width: 44px; height: 44px; border-radius: 14px; flex-shrink: 0;
+  }
+  .sheet-opt.elements .s-swatch { background: var(--elements); }
+  .sheet-opt.hyrox    .s-swatch { background: var(--hyrox); }
+  .sheet-opt.descanso .s-swatch { background: var(--descanso); }
+
+  .s-text { flex: 1; }
+  .s-name { font-size: 15px; font-weight: 700; }
+  .sheet-opt.elements .s-name { color: var(--elements); }
+  .sheet-opt.hyrox    .s-name { color: var(--hyrox); }
+  .sheet-opt.descanso .s-name { color: var(--descanso); }
+  .s-kcal { font-size: 12px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+
+  .s-check {
+    width: 26px; height: 26px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; color: #1a1d2e;
+    background: var(--lime); opacity: 0; transition: opacity .15s;
+  }
+  .sheet-opt.selected .s-check { opacity: 1; }
+
+  .sheet-cancel {
+    margin: 4px 16px 0; padding: 15px; width: calc(100% - 32px);
+    background: var(--surface2); border: none;
+    border-radius: 18px; color: var(--text2);
+    font-family: inherit; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: background .2s;
+  }
+  .sheet-cancel:hover { background: var(--surface3); }
+
+  /* ── Compra ── */
+  .reset-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--surface2); border: none;
+    color: var(--text2); font-family: inherit; font-size: 12px; font-weight: 600;
+    padding: 9px 18px; border-radius: 100px; cursor: pointer; margin-bottom: 18px;
+    transition: background .2s;
+  }
+  .reset-btn:hover { background: var(--surface3); }
+
+  .cat-card {
+    background: var(--surface); border-radius: 20px; margin-bottom: 12px;
+    overflow: hidden; box-shadow: var(--shadow);
+  }
+  .cat-label {
+    padding: 12px 18px;
+    font-size: 11px; font-weight: 700; color: var(--text2);
+    letter-spacing: .5px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .c-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 13px 18px; border-bottom: 1px solid var(--border);
+    cursor: pointer; transition: opacity .25s, background .15s;
+  }
+  .c-item:last-child { border-bottom: none; }
+  .c-item:active { background: var(--surface2); }
+  .c-item.done { opacity: .3; }
+
+  .c-box {
+    width: 22px; height: 22px; border: 1.5px solid var(--surface3);
+    border-radius: 7px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s;
+  }
+  .c-item.done .c-box { background: var(--lime); border-color: var(--lime); }
+  .c-check-icon { display: none; font-size: 12px; color: #1a1d2e; font-weight: 800; }
+  .c-item.done .c-check-icon { display: block; }
+  .c-item.done .c-name { text-decoration: line-through; color: var(--muted); }
+  .c-name { flex: 1; font-size: 14px; font-weight: 400; color: var(--text2); }
+  .c-qty  { font-size: 12px; font-weight: 600; color: var(--muted); }
+
+  /* ── Menu selector ── */
+  .menu-selector {
+    display: flex; gap: 8px; overflow-x: auto;
+    padding-bottom: 4px; margin-bottom: 20px;
+    scrollbar-width: none;
+  }
+  .menu-selector::-webkit-scrollbar { display: none; }
+  .menu-btn {
+    flex-shrink: 0;
+    background: var(--surface2); border: 2px solid transparent;
+    color: var(--text2); font-family: inherit; font-size: 12px; font-weight: 600;
+    padding: 8px 16px; border-radius: 100px; cursor: pointer;
+    transition: all .2s; white-space: nowrap;
+  }
+  .menu-btn.on {
+    background: rgba(156,152,246,.15);
+    border-color: var(--lavender);
+    color: var(--lavender);
+  }
+
+  /* ── Loading ── */
+  .loading {
+    display: flex; align-items: center; justify-content: center;
+    padding: 60px 20px; color: var(--muted); font-size: 14px; gap: 10px;
+  }
+  .spinner {
+    width: 18px; height: 18px; border: 2px solid var(--surface3);
+    border-top-color: var(--lavender); border-radius: 50%;
+    animation: spin .6s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Perfil ── */
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+
+  .i-card {
+    background: var(--surface);
+    border-radius: 20px; padding: 18px;
+    box-shadow: var(--shadow);
+  }
+  .i-card.full    { grid-column: 1/-1; }
+  .i-card.accent-lavender { background: var(--lavender); }
+  .i-card.accent-lavender .i-label { color: rgba(26,29,46,.55); }
+  .i-card.accent-lavender .i-val   { color: #1a1d2e; }
+  .i-card.accent-lavender .i-unit  { color: rgba(26,29,46,.55); }
+  .i-card.accent-salmon { background: var(--salmon); }
+  .i-card.accent-salmon .i-label { color: rgba(26,29,46,.55); }
+  .i-card.accent-salmon .i-val   { color: #1a1d2e; }
+  .i-card.accent-salmon .i-unit  { color: rgba(26,29,46,.55); }
+
+  .i-label { font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: .6px; text-transform: uppercase; margin-bottom: 8px; }
+  .i-val   { font-size: 34px; font-weight: 800; letter-spacing: -.6px; line-height: 1; color: var(--text); }
+  .i-unit  { font-size: 12px; font-weight: 500; color: var(--text2); margin-top: 4px; }
+
+  .kcal-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 13px 0; border-bottom: 1px solid var(--border);
+  }
+  .kcal-row:last-child { border-bottom: none; }
+  .kcal-tipo { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: var(--text2); }
+  .tipo-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .tipo-dot.elements { background: var(--elements); }
+  .tipo-dot.hyrox    { background: var(--hyrox); }
+  .tipo-dot.descanso { background: var(--descanso); }
+
+  .kcal-val {
+    font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 100px;
+  }
+  .kcal-val.elements { background: rgba(156,152,246,.15); color: var(--elements); }
+  .kcal-val.hyrox    { background: rgba(242,157,162,.15); color: var(--hyrox); }
+  .kcal-val.descanso { background: rgba(232,252,191,.12); color: #b0cc6a; }
+
+  .goal-text { font-size: 13.5px; font-weight: 400; line-height: 1.7; color: var(--text2); margin-top: 6px; }
+  .goal-text strong { color: var(--text); font-weight: 700; }
+  .goal-text small  { font-size: 11px; color: var(--muted); font-weight: 500; display: block; margin-top: 8px; }
+
+  @media(min-width:600px){
+    header, nav { padding-left: 28px; padding-right: 28px; }
+    #v-semana, #v-compra, #v-info { padding-left: 28px; padding-right: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Álvaro · <span>Nutrición</span></div>
+  <button class="week-pill" id="weekPill" onclick="cycleMenu()">
+    <span id="weekLabel">Cargando…</span> ↕
+  </button>
+</header>
+
+<nav>
+  <button class="tab on" onclick="showTab('semana',this)">Menú</button>
+  <button class="tab"    onclick="showTab('compra',this)">Compra</button>
+  <button class="tab"    onclick="showTab('info',this)">Perfil</button>
+</nav>
+
+<!-- Bottom sheet -->
+<div class="overlay" id="overlay" onclick="closeSheet()">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheet-handle-wrap"><div class="sheet-handle"></div></div>
+    <div class="sheet-head">
+      <div class="sheet-sublabel">Cambiar tipo de jornada</div>
+      <div class="sheet-dayname" id="sheet-dayname"></div>
+    </div>
+    <div class="sheet-options" id="sheet-options"></div>
+    <button class="sheet-cancel" onclick="closeSheet()">Cancelar</button>
+  </div>
+</div>
+
+<div id="v-semana" class="view on">
+  <div class="loading"><div class="spinner"></div> Cargando menú…</div>
+</div>
+
+<div id="v-compra" class="view">
+  <div class="section-head">
+    <div class="section-title">Lista de la compra</div>
+    <div class="count-pill" id="compra-badge"></div>
+  </div>
+  <button class="reset-btn" onclick="resetCompra()">↺ Desmarcar todo</button>
+  <div id="compra-list"><div class="loading"><div class="spinner"></div> Cargando…</div></div>
+</div>
+
+<div id="v-info" class="view">
+  <div class="section-head" style="margin-bottom:18px">
+    <div class="section-title">Mi perfil</div>
+  </div>
+  <div class="info-grid">
+    <div class="i-card accent-lavender">
+      <div class="i-label">Edad</div>
+      <div class="i-val">54</div>
+      <div class="i-unit">años</div>
+    </div>
+    <div class="i-card">
+      <div class="i-label">Peso objetivo</div>
+      <div class="i-val">70</div>
+      <div class="i-unit">kg</div>
+    </div>
+    <div class="i-card accent-salmon">
+      <div class="i-label">Altura</div>
+      <div class="i-val">172</div>
+      <div class="i-unit">cm</div>
+    </div>
+    <div class="i-card">
+      <div class="i-label">Pasos / día</div>
+      <div class="i-val">6k</div>
+      <div class="i-unit">media</div>
+    </div>
+    <div class="i-card full">
+      <div class="i-label">Calorías por tipo de jornada</div>
+      <div class="kcal-row">
+        <div class="kcal-tipo"><div class="tipo-dot elements"></div>Elements</div>
+        <div class="kcal-val elements">1.600 kcal</div>
+      </div>
+      <div class="kcal-row">
+        <div class="kcal-tipo"><div class="tipo-dot hyrox"></div>Hyrox</div>
+        <div class="kcal-val hyrox">1.900 kcal</div>
+      </div>
+      <div class="kcal-row">
+        <div class="kcal-tipo"><div class="tipo-dot descanso"></div>Descanso</div>
+        <div class="kcal-val descanso">1.500 kcal</div>
+      </div>
+    </div>
+    <div class="i-card full">
+      <div class="i-label">Objetivo</div>
+      <div class="goal-text">
+        Pérdida de grasa manteniendo el peso actual de <strong>70 kg</strong> mediante déficit calórico adaptado al tipo de entreno diario.
+        <small>Semana A = 4 entrenos · Semana B = 5 entrenos (sábado Elements)</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Constants ──
+const DAY_NAMES  = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+const TYPE_LABEL = { elements:"Elements", hyrox:"Hyrox", descanso:"Descanso" };
+const TYPE_KCAL  = { elements:1600, hyrox:1900, descanso:1500 };
+
+const DESAYUNO = {
+  entreno:  ["3 Wasa Sesam","40 g aguacate","100 g pavo cocido","Batido: 250 ml zumo naranja + 100 g plátano + 100 g yogur griego"],
+  descanso: ["Café o té","2 tortitas de maíz o pan tipo Wasa","2 rodajas de tomate","40 g aguacate","1 huevo revuelto","1 fruta"]
+};
+
+// ── State ──
+let menuIndex = [];       // lista de menús del index
+let currentMenuId = null; // id del menú activo
+let currentMenu = null;   // datos del menú activo (JSON cargado)
+let dayTypes = {};        // overrides de tipo por día { menuId: [t0..t6] }
+let checked = {};         // checkboxes compra
+let sheetIdx = null;
+
+// ── Persistence ──
+function loadState() {
+  try {
+    const s = JSON.parse(localStorage.getItem('alvnut_v2') || '{}');
+    if (s.currentMenuId) currentMenuId = s.currentMenuId;
+    if (s.dayTypes)      dayTypes      = s.dayTypes;
+    if (s.checked)       checked       = s.checked;
+  } catch(e) {}
+}
+
+function save() {
+  localStorage.setItem('alvnut_v2', JSON.stringify({ currentMenuId, dayTypes, checked }));
+}
+
+// ── Boot ──
+async function boot() {
+  loadState();
+  try {
+    const res = await fetch('menu-index.json');
+    menuIndex = (await res.json()).menus;
+  } catch(e) {
+    document.getElementById('v-semana').innerHTML =
+      '<div class="loading">⚠️ No se pudo cargar menu-index.json</div>';
+    return;
+  }
+  // Si no hay menú guardado, usar el último
+  if (!currentMenuId || !menuIndex.find(m => m.id === currentMenuId)) {
+    currentMenuId = menuIndex[menuIndex.length - 1].id;
+  }
+  await loadMenu(currentMenuId);
+}
+
+async function loadMenu(id) {
+  const meta = menuIndex.find(m => m.id === id);
+  if (!meta) return;
+  currentMenuId = id;
+  save();
+  document.getElementById('weekLabel').textContent = meta.label;
+  document.getElementById('v-semana').innerHTML =
+    '<div class="loading"><div class="spinner"></div> Cargando menú…</div>';
+  try {
+    const res = await fetch(meta.file);
+    currentMenu = await res.json();
+    // Inicializar tipos si no existen
+    if (!dayTypes[id]) dayTypes[id] = [...currentMenu.types];
+    renderSemana();
+    renderCompra();
+  } catch(e) {
+    document.getElementById('v-semana').innerHTML =
+      `<div class="loading">⚠️ No se pudo cargar ${meta.file}</div>`;
+  }
+}
+
+// ── Cycle through menus (pill button) ──
+function cycleMenu() {
+  const idx = menuIndex.findIndex(m => m.id === currentMenuId);
+  const next = menuIndex[(idx + 1) % menuIndex.length];
+  loadMenu(next.id);
+}
+
+// ── Render semana ──
+function renderSemana() {
+  const types = dayTypes[currentMenuId];
+  const n = types.filter(t => t !== 'descanso').length;
+  const meta = menuIndex.find(m => m.id === currentMenuId);
+  document.getElementById('v-semana').innerHTML = `
+    <div class="section-head">
+      <div class="section-title">${meta.label}</div>
+      <div class="count-pill">${n} entrenos</div>
+    </div>
+    <div id="days-grid"></div>`;
+  const grid = document.getElementById('days-grid');
+  types.forEach((tipo, i) => grid.appendChild(buildCard(i, tipo)));
+}
+
+function buildCard(i, tipo) {
+  const div = document.createElement('div');
+  div.className = 'day-card';
+  div.id = 'card-' + i;
+  const kcal = TYPE_KCAL[tipo];
+  const cd = currentMenu.days[i];
+  const des = tipo === 'descanso' ? DESAYUNO.descanso : DESAYUNO.entreno;
+  div.innerHTML = `
+    <div class="day-band ${tipo}">
+      <div class="band-left">
+        <div class="day-name">${DAY_NAMES[i]}</div>
+        <button class="type-pill" onclick="openSheet(${i})">${TYPE_LABEL[tipo]} ▾</button>
+      </div>
+      <div class="band-right">
+        <div class="kcal-block">
+          <div class="kcal-num">${kcal.toLocaleString('es')}</div>
+          <div class="kcal-unit">kcal</div>
+        </div>
+        <button class="expand-btn" onclick="toggleCard(${i})">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="day-body">
+      ${mealHtml('Desayuno', des)}
+      ${mealHtml('Comida',   cd?.comida)}
+      ${mealHtml('Cena',     cd?.cena)}
+    </div>`;
+  return div;
+}
+
+function mealHtml(lbl, items) {
+  const has = items && items.length;
+  return `<div class="meal">
+    <div class="meal-label">${lbl}</div>
+    ${has
+      ? items.map(it => `<div class="meal-item ${it === 'Comida libre' ? 'libre' : ''}">${it}</div>`).join('')
+      : '<div class="meal-empty">Sin especificar</div>'
+    }
+  </div>`;
+}
+
+function toggleCard(i) { document.getElementById('card-' + i).classList.toggle('open'); }
+
+// ── Bottom sheet ──
+function openSheet(i) {
+  sheetIdx = i;
+  const tipo = dayTypes[currentMenuId][i];
+  document.getElementById('sheet-dayname').textContent = DAY_NAMES[i];
+  document.getElementById('sheet-options').innerHTML =
+    ['elements','hyrox','descanso'].map(t => `
+      <div class="sheet-opt ${t} ${t === tipo ? 'selected' : ''}" onclick="selectType('${t}')">
+        <div class="s-swatch"></div>
+        <div class="s-text">
+          <div class="s-name">${TYPE_LABEL[t]}</div>
+          <div class="s-kcal">${TYPE_KCAL[t].toLocaleString('es')} kcal</div>
+        </div>
+        <div class="s-check">✓</div>
+      </div>`).join('');
+  document.getElementById('overlay').classList.add('open');
+}
+
+function closeSheet() {
+  document.getElementById('overlay').classList.remove('open');
+  sheetIdx = null;
+}
+
+function selectType(tipo) {
+  if (sheetIdx === null) return;
+  const i = sheetIdx;
+  dayTypes[currentMenuId][i] = tipo;
+  save();
+  closeSheet();
+  const old = document.getElementById('card-' + i);
+  const wasOpen = old && old.classList.contains('open');
+  const neu = buildCard(i, tipo);
+  neu.style.animation = 'none';
+  if (wasOpen) neu.classList.add('open');
+  old.replaceWith(neu);
+  const n = dayTypes[currentMenuId].filter(t => t !== 'descanso').length;
+  const badge = document.querySelector('.count-pill');
+  if (badge) badge.textContent = n + ' entrenos';
+}
+
+// ── Compra ──
+function renderCompra() {
+  if (!currentMenu) return;
+  const meta = menuIndex.find(m => m.id === currentMenuId);
+  document.getElementById('compra-badge').textContent = meta.label;
+  const data = currentMenu.compra;
+  document.getElementById('compra-list').innerHTML = Object.entries(data).map(([cat, items]) => `
+    <div class="cat-card">
+      <div class="cat-label">${cat}</div>
+      ${items.map((it, idx) => {
+        const key = `${currentMenuId}_${cat}_${idx}`;
+        const done = !!checked[key];
+        return `<div class="c-item ${done ? 'done' : ''}" onclick="toggleItem('${key}',this)">
+          <div class="c-box"><span class="c-check-icon">✓</span></div>
+          <div class="c-name">${it.n}</div>
+          <div class="c-qty">${it.q}</div>
+        </div>`;
+      }).join('')}
+    </div>`).join('');
+}
+
+function toggleItem(key, el) {
+  checked[key] = !checked[key];
+  el.classList.toggle('done', checked[key]);
+  save();
+}
+
+function resetCompra() {
+  Object.keys(checked).forEach(k => {
+    if (k.startsWith(currentMenuId + '_')) delete checked[k];
+  });
+  save();
+  renderCompra();
+}
+
+// ── Tab navigation ──
+function showTab(id, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  document.getElementById('v-' + id).classList.add('on');
+  btn.classList.add('on');
+  if (id === 'compra') renderCompra();
+  if (id === 'semana') renderSemana();
+}
+
+// ── Start ──
+boot();
+</script>
+</body>
+</html>

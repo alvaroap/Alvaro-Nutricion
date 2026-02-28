@@ -1,0 +1,8 @@
+{
+  "menus": [
+    {"id": "enero-s1",    "label": "Enero · Semana 1",   "file": "menus/enero-s1.json"},
+    {"id": "enero-s2",    "label": "Enero · Semana 2",   "file": "menus/enero-s2.json"},
+    {"id": "febrero-s1",  "label": "Febrero · Semana 1", "file": "menus/febrero-s1.json"},
+    {"id": "febrero-s2",  "label": "Febrero · Semana 2", "file": "menus/febrero-s2.json"}
+  ]
+}
