@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0043)file:///Users/alvaro/Downloads/index_1.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Álvaro · Nutrición</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./Álvaro · Nutrición_files/css2" rel="stylesheet">
 <style>
   :root {
     --bg:        #0D1119;
     --surface:   #1E202D;
     --surface2:  #252837;
     --surface3:  #2e3144;
-
     --lavender:  #9C98F6;
     --salmon:    #F29DA2;
     --lime:      #E8FCBF;
     --lime-dark: #c8f135;
-
     --text:      #F4F5FC;
     --text2:     #9095b0;
     --muted:     #555a72;
     --border:    rgba(255,255,255,.06);
-
     --elements:  #9C98F6;
     --hyrox:     #F29DA2;
     --descanso:  #E8FCBF;
-
     --shadow: 0 4px 24px rgba(0,0,0,.4);
   }
 
@@ -51,15 +47,25 @@
   .logo { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -.3px; }
   .logo span { color: var(--lavender); }
 
-  .week-pill {
-    display: flex; align-items: center; gap: 6px;
+  /* ── Week switcher ── */
+  .week-switcher {
+    display: flex; align-items: center;
+    background: var(--surface2);
+    border-radius: 100px;
+    padding: 4px;
+    gap: 2px;
+  }
+  .week-btn {
+    font-family: inherit; font-size: 12px; font-weight: 700;
+    padding: 6px 16px; border-radius: 100px; border: none;
+    cursor: pointer; transition: all .2s;
+    background: none; color: var(--text2);
+  }
+  .week-btn.on {
     background: var(--lime);
     color: #1a1d2e;
-    font-family: inherit; font-size: 12px; font-weight: 700;
-    padding: 8px 16px; border-radius: 100px; border: none;
-    cursor: pointer; transition: filter .15s;
   }
-  .week-pill:active { filter: brightness(.92); }
+  .week-btn:active { filter: brightness(.92); }
 
   /* ── Nav ── */
   nav {
@@ -78,10 +84,7 @@
     padding: 10px 10px; cursor: pointer; text-align: center;
     transition: all .2s;
   }
-  .tab.on {
-    background: var(--lime);
-    color: #1a1d2e;
-  }
+  .tab.on { background: var(--lime); color: #1a1d2e; }
 
   /* ── Views ── */
   .view { display: none; }
@@ -123,19 +126,14 @@
   .day-band {
     padding: 18px 20px 16px;
     display: flex; align-items: flex-start; justify-content: space-between;
-    transition: background .3s;
-    position: relative;
+    transition: background .3s; position: relative;
   }
   .day-band.elements { background: var(--elements); }
   .day-band.hyrox    { background: var(--hyrox); }
   .day-band.descanso { background: var(--descanso); }
 
   .band-left { display: flex; flex-direction: column; gap: 8px; }
-
-  .day-name {
-    font-size: 20px; font-weight: 800; letter-spacing: -.4px; line-height: 1;
-    color: #1a1d2e;
-  }
+  .day-name { font-size: 20px; font-weight: 800; letter-spacing: -.4px; line-height: 1; color: #1a1d2e; }
 
   .type-pill {
     display: inline-flex; align-items: center; gap: 4px;
@@ -147,12 +145,8 @@
   .type-pill:active { filter: brightness(.9); }
 
   .band-right { display: flex; align-items: center; gap: 10px; }
-
   .kcal-block { text-align: right; }
-  .kcal-num {
-    font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1;
-    color: #1a1d2e;
-  }
+  .kcal-num { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1; color: #1a1d2e; }
   .kcal-unit { font-size: 10px; font-weight: 600; color: rgba(26,29,46,.55); margin-top: 2px; }
 
   .expand-btn {
@@ -171,12 +165,10 @@
 
   .meal { padding: 14px 20px; border-bottom: 1px solid var(--border); }
   .meal:last-child { border-bottom: none; }
-
   .meal-label {
     font-size: 10px; font-weight: 700; letter-spacing: .7px;
     color: var(--muted); text-transform: uppercase; margin-bottom: 10px;
   }
-
   .meal-item {
     font-size: 13.5px; font-weight: 400; line-height: 1.55; color: var(--text2);
     padding: 4px 0 4px 12px;
@@ -184,9 +176,7 @@
     margin-bottom: 4px;
   }
   .meal-item:last-child { margin-bottom: 0; }
-  .meal-item.libre {
-    color: var(--lime-dark); border-left-color: var(--lime-dark); font-weight: 600;
-  }
+  .meal-item.libre { color: var(--lime-dark); border-left-color: var(--lime-dark); font-weight: 600; }
   .meal-empty { font-size: 13px; color: var(--muted); font-style: italic; padding-left: 12px; }
 
   /* ── Bottom sheet ── */
@@ -195,7 +185,6 @@
     background: rgba(0,0,0,.6); backdrop-filter: blur(6px);
   }
   .overlay.open { display: flex; align-items: flex-end; }
-
   .sheet {
     width: 100%; background: var(--surface);
     border-radius: 28px 28px 0 0;
@@ -205,42 +194,31 @@
     box-shadow: 0 -12px 60px rgba(0,0,0,.6);
   }
   .overlay.open .sheet { transform: translateY(0); }
-
   .sheet-handle-wrap { padding: 14px; display: flex; justify-content: center; }
   .sheet-handle { width: 40px; height: 4px; background: var(--surface3); border-radius: 2px; }
-
   .sheet-head { padding: 4px 22px 18px; border-bottom: 1px solid var(--border); }
   .sheet-sublabel { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .5px; margin-bottom: 3px; }
   .sheet-dayname  { font-size: 22px; font-weight: 800; letter-spacing: -.4px; color: var(--text); }
-
   .sheet-options { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
-
   .sheet-opt {
     display: flex; align-items: center; gap: 14px;
     padding: 16px 18px; border-radius: 18px; cursor: pointer;
-    background: var(--surface2);
-    border: 2px solid transparent;
-    transition: all .15s;
+    background: var(--surface2); border: 2px solid transparent; transition: all .15s;
   }
   .sheet-opt:active { transform: scale(.98); }
   .sheet-opt.selected.elements { border-color: var(--elements); background: rgba(156,152,246,.1); }
   .sheet-opt.selected.hyrox    { border-color: var(--hyrox);    background: rgba(242,157,162,.1); }
   .sheet-opt.selected.descanso { border-color: var(--descanso); background: rgba(232,252,191,.08); }
-
-  .s-swatch {
-    width: 44px; height: 44px; border-radius: 14px; flex-shrink: 0;
-  }
+  .s-swatch { width: 44px; height: 44px; border-radius: 14px; flex-shrink: 0; }
   .sheet-opt.elements .s-swatch { background: var(--elements); }
   .sheet-opt.hyrox    .s-swatch { background: var(--hyrox); }
   .sheet-opt.descanso .s-swatch { background: var(--descanso); }
-
   .s-text { flex: 1; }
   .s-name { font-size: 15px; font-weight: 700; }
   .sheet-opt.elements .s-name { color: var(--elements); }
   .sheet-opt.hyrox    .s-name { color: var(--hyrox); }
   .sheet-opt.descanso .s-name { color: var(--descanso); }
   .s-kcal { font-size: 12px; font-weight: 500; color: var(--muted); margin-top: 2px; }
-
   .s-check {
     width: 26px; height: 26px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
@@ -248,7 +226,6 @@
     background: var(--lime); opacity: 0; transition: opacity .15s;
   }
   .sheet-opt.selected .s-check { opacity: 1; }
-
   .sheet-cancel {
     margin: 4px 16px 0; padding: 15px; width: calc(100% - 32px);
     background: var(--surface2); border: none;
@@ -267,19 +244,11 @@
     transition: background .2s;
   }
   .reset-btn:hover { background: var(--surface3); }
-
-  .cat-card {
-    background: var(--surface); border-radius: 20px; margin-bottom: 12px;
-    overflow: hidden; box-shadow: var(--shadow);
-  }
+  .cat-card { background: var(--surface); border-radius: 20px; margin-bottom: 12px; overflow: hidden; box-shadow: var(--shadow); }
   .cat-label {
-    padding: 12px 18px;
-    font-size: 11px; font-weight: 700; color: var(--text2);
-    letter-spacing: .5px;
-    background: var(--surface2);
-    border-bottom: 1px solid var(--border);
+    padding: 12px 18px; font-size: 11px; font-weight: 700; color: var(--text2);
+    letter-spacing: .5px; background: var(--surface2); border-bottom: 1px solid var(--border);
   }
-
   .c-item {
     display: flex; align-items: center; gap: 14px;
     padding: 13px 18px; border-bottom: 1px solid var(--border);
@@ -288,12 +257,10 @@
   .c-item:last-child { border-bottom: none; }
   .c-item:active { background: var(--surface2); }
   .c-item.done { opacity: .3; }
-
   .c-box {
     width: 22px; height: 22px; border: 1.5px solid var(--surface3);
     border-radius: 7px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    transition: all .2s;
+    display: flex; align-items: center; justify-content: center; transition: all .2s;
   }
   .c-item.done .c-box { background: var(--lime); border-color: var(--lime); }
   .c-check-icon { display: none; font-size: 12px; color: #1a1d2e; font-weight: 800; }
@@ -301,26 +268,6 @@
   .c-item.done .c-name { text-decoration: line-through; color: var(--muted); }
   .c-name { flex: 1; font-size: 14px; font-weight: 400; color: var(--text2); }
   .c-qty  { font-size: 12px; font-weight: 600; color: var(--muted); }
-
-  /* ── Menu selector ── */
-  .menu-selector {
-    display: flex; gap: 8px; overflow-x: auto;
-    padding-bottom: 4px; margin-bottom: 20px;
-    scrollbar-width: none;
-  }
-  .menu-selector::-webkit-scrollbar { display: none; }
-  .menu-btn {
-    flex-shrink: 0;
-    background: var(--surface2); border: 2px solid transparent;
-    color: var(--text2); font-family: inherit; font-size: 12px; font-weight: 600;
-    padding: 8px 16px; border-radius: 100px; cursor: pointer;
-    transition: all .2s; white-space: nowrap;
-  }
-  .menu-btn.on {
-    background: rgba(156,152,246,.15);
-    border-color: var(--lavender);
-    color: var(--lavender);
-  }
 
   /* ── Loading ── */
   .loading {
@@ -336,13 +283,8 @@
 
   /* ── Perfil ── */
   .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-
-  .i-card {
-    background: var(--surface);
-    border-radius: 20px; padding: 18px;
-    box-shadow: var(--shadow);
-  }
-  .i-card.full    { grid-column: 1/-1; }
+  .i-card { background: var(--surface); border-radius: 20px; padding: 18px; box-shadow: var(--shadow); }
+  .i-card.full { grid-column: 1/-1; }
   .i-card.accent-lavender { background: var(--lavender); }
   .i-card.accent-lavender .i-label { color: rgba(26,29,46,.55); }
   .i-card.accent-lavender .i-val   { color: #1a1d2e; }
@@ -351,29 +293,20 @@
   .i-card.accent-salmon .i-label { color: rgba(26,29,46,.55); }
   .i-card.accent-salmon .i-val   { color: #1a1d2e; }
   .i-card.accent-salmon .i-unit  { color: rgba(26,29,46,.55); }
-
   .i-label { font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: .6px; text-transform: uppercase; margin-bottom: 8px; }
   .i-val   { font-size: 34px; font-weight: 800; letter-spacing: -.6px; line-height: 1; color: var(--text); }
   .i-unit  { font-size: 12px; font-weight: 500; color: var(--text2); margin-top: 4px; }
-
-  .kcal-row {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 13px 0; border-bottom: 1px solid var(--border);
-  }
+  .kcal-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid var(--border); }
   .kcal-row:last-child { border-bottom: none; }
   .kcal-tipo { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: var(--text2); }
   .tipo-dot { width: 9px; height: 9px; border-radius: 50%; }
   .tipo-dot.elements { background: var(--elements); }
   .tipo-dot.hyrox    { background: var(--hyrox); }
   .tipo-dot.descanso { background: var(--descanso); }
-
-  .kcal-val {
-    font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 100px;
-  }
+  .kcal-val { font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 100px; }
   .kcal-val.elements { background: rgba(156,152,246,.15); color: var(--elements); }
   .kcal-val.hyrox    { background: rgba(242,157,162,.15); color: var(--hyrox); }
   .kcal-val.descanso { background: rgba(232,252,191,.12); color: #b0cc6a; }
-
   .goal-text { font-size: 13.5px; font-weight: 400; line-height: 1.7; color: var(--text2); margin-top: 6px; }
   .goal-text strong { color: var(--text); font-weight: 700; }
   .goal-text small  { font-size: 11px; color: var(--muted); font-weight: 500; display: block; margin-top: 8px; }
@@ -388,15 +321,16 @@
 
 <header>
   <div class="logo">Álvaro · <span>Nutrición</span></div>
-  <button class="week-pill" id="weekPill" onclick="cycleMenu()">
-    <span id="weekLabel">Cargando…</span> ↕
-  </button>
+  <div class="week-switcher" id="weekSwitcher">
+    <button class="week-btn" id="btn-semana-1" onclick="loadMenu(&#39;semana-1&#39;)">S1</button>
+    <button class="week-btn" id="btn-semana-2" onclick="loadMenu(&#39;semana-2&#39;)">S2</button>
+  </div>
 </header>
 
 <nav>
-  <button class="tab on" onclick="showTab('semana',this)">Menú</button>
-  <button class="tab"    onclick="showTab('compra',this)">Compra</button>
-  <button class="tab"    onclick="showTab('info',this)">Perfil</button>
+  <button class="tab on" onclick="showTab(&#39;semana&#39;,this)">Menú</button>
+  <button class="tab" onclick="showTab(&#39;compra&#39;,this)">Compra</button>
+  <button class="tab" onclick="showTab(&#39;info&#39;,this)">Perfil</button>
 </nav>
 
 <!-- Bottom sheet -->
@@ -412,9 +346,7 @@
   </div>
 </div>
 
-<div id="v-semana" class="view on">
-  <div class="loading"><div class="spinner"></div> Cargando menú…</div>
-</div>
+<div id="v-semana" class="view on"><div class="loading">⚠️ No se pudo cargar menu-index.json</div></div>
 
 <div id="v-compra" class="view">
   <div class="section-head">
@@ -476,7 +408,6 @@
 </div>
 
 <script>
-// ── Constants ──
 const DAY_NAMES  = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
 const TYPE_LABEL = { elements:"Elements", hyrox:"Hyrox", descanso:"Descanso" };
 const TYPE_KCAL  = { elements:1600, hyrox:1900, descanso:1500 };
@@ -486,15 +417,13 @@ const DESAYUNO = {
   descanso: ["Café o té","2 tortitas de maíz o pan tipo Wasa","2 rodajas de tomate","40 g aguacate","1 huevo revuelto","1 fruta"]
 };
 
-// ── State ──
-let menuIndex = [];       // lista de menús del index
-let currentMenuId = null; // id del menú activo
-let currentMenu = null;   // datos del menú activo (JSON cargado)
-let dayTypes = {};        // overrides de tipo por día { menuId: [t0..t6] }
-let checked = {};         // checkboxes compra
+let menuIndex = [];
+let currentMenuId = null;
+let currentMenu = null;
+let dayTypes = {};
+let checked = {};
 let sheetIdx = null;
 
-// ── Persistence ──
 function loadState() {
   try {
     const s = JSON.parse(localStorage.getItem('alvnut_v2') || '{}');
@@ -508,7 +437,12 @@ function save() {
   localStorage.setItem('alvnut_v2', JSON.stringify({ currentMenuId, dayTypes, checked }));
 }
 
-// ── Boot ──
+// Devuelve el índice del día actual (0=Lunes … 6=Domingo), o -1 si es fin de semana sin entreno
+function todayIndex() {
+  const d = new Date().getDay(); // 0=Dom, 1=Lun … 6=Sab
+  return d === 0 ? 6 : d - 1;   // convierte a 0=Lun … 6=Dom
+}
+
 async function boot() {
   loadState();
   try {
@@ -519,7 +453,6 @@ async function boot() {
       '<div class="loading">⚠️ No se pudo cargar menu-index.json</div>';
     return;
   }
-  // Si no hay menú guardado, usar el último
   if (!currentMenuId || !menuIndex.find(m => m.id === currentMenuId)) {
     currentMenuId = menuIndex[menuIndex.length - 1].id;
   }
@@ -531,13 +464,17 @@ async function loadMenu(id) {
   if (!meta) return;
   currentMenuId = id;
   save();
-  document.getElementById('weekLabel').textContent = meta.label;
+
+  // Actualizar botones S1/S2
+  document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('on'));
+  const activeBtn = document.getElementById('btn-' + id);
+  if (activeBtn) activeBtn.classList.add('on');
+
   document.getElementById('v-semana').innerHTML =
     '<div class="loading"><div class="spinner"></div> Cargando menú…</div>';
   try {
     const res = await fetch(meta.file);
     currentMenu = await res.json();
-    // Inicializar tipos si no existen
     if (!dayTypes[id]) dayTypes[id] = [...currentMenu.types];
     renderSemana();
     renderCompra();
@@ -547,14 +484,6 @@ async function loadMenu(id) {
   }
 }
 
-// ── Cycle through menus (pill button) ──
-function cycleMenu() {
-  const idx = menuIndex.findIndex(m => m.id === currentMenuId);
-  const next = menuIndex[(idx + 1) % menuIndex.length];
-  loadMenu(next.id);
-}
-
-// ── Render semana ──
 function renderSemana() {
   const types = dayTypes[currentMenuId];
   const n = types.filter(t => t !== 'descanso').length;
@@ -566,7 +495,12 @@ function renderSemana() {
     </div>
     <div id="days-grid"></div>`;
   const grid = document.getElementById('days-grid');
-  types.forEach((tipo, i) => grid.appendChild(buildCard(i, tipo)));
+  const today = todayIndex();
+  types.forEach((tipo, i) => {
+    const card = buildCard(i, tipo);
+    if (i === today) card.classList.add('open');
+    grid.appendChild(card);
+  });
 }
 
 function buildCard(i, tipo) {
@@ -615,7 +549,6 @@ function mealHtml(lbl, items) {
 
 function toggleCard(i) { document.getElementById('card-' + i).classList.toggle('open'); }
 
-// ── Bottom sheet ──
 function openSheet(i) {
   sheetIdx = i;
   const tipo = dayTypes[currentMenuId][i];
@@ -655,7 +588,6 @@ function selectType(tipo) {
   if (badge) badge.textContent = n + ' entrenos';
 }
 
-// ── Compra ──
 function renderCompra() {
   if (!currentMenu) return;
   const meta = menuIndex.find(m => m.id === currentMenuId);
@@ -690,7 +622,6 @@ function resetCompra() {
   renderCompra();
 }
 
-// ── Tab navigation ──
 function showTab(id, btn) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
@@ -700,8 +631,8 @@ function showTab(id, btn) {
   if (id === 'semana') renderSemana();
 }
 
-// ── Start ──
 boot();
 </script>
-</body>
-</html>
+
+
+</body></html>
