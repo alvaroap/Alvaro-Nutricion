@@ -1,0 +1,93 @@
+{
+  "id": "febrero-s1",
+  "label": "Febrero · Semana 1",
+  "types": ["elements","elements","hyrox","descanso","elements","elements","descanso"],
+  "days": [
+    {
+      "comida": ["100 g garbanzos cocidos","Bimi + calabaza 250 g","50 g feta desmigado","150 g mango","15 g frutos secos","100 g pollo","½ yogur griego ligero con albahaca, limón y pimienta negra"],
+      "cena": ["250 g pescado blanco","300 ml puré"]
+    },
+    {
+      "comida": ["100 g garbanzos cocidos","Bimi + calabaza 250 g","50 g feta desmigado","150 g mango","15 g frutos secos","1 huevo","½ yogur griego ligero con albahaca, limón y pimienta negra"],
+      "cena": ["250 g pollo","300 ml puré"]
+    },
+    {
+      "comida": ["100 g arroz","250 g muslos de pollo (200 g limpio)","250 g sofrito de pimiento y cebolla"],
+      "cena": ["Sopa 20 g fideos","Tortilla de 2 huevos + ½ bola mozzarella light"]
+    },
+    {
+      "comida": ["200 g salmón o pescado azul","250 g bimi + calabaza + 50 g cherrys","Salsa: 20 g Cottage + 1 cda soja + 1 cdita sésamo"],
+      "cena": ["350 g judías verdes rehogadas","3 huevos cocidos","200 g patata cocida machacada con ajo y pimentón"]
+    },
+    {
+      "comida": ["Curry de pollo: 200 g pollo + 250 g cebolla y champiñones + 150 g mango + 15 g anacardos + 100 ml leche + curry"],
+      "cena": ["250 g sepia con 100 g cebolla en juliana","Natillas proteicas de chocolate"]
+    },
+    {
+      "comida": ["Comida libre"],
+      "cena": ["250 g pescado semigraso","250 g calabacín"]
+    },
+    {
+      "comida": ["Bolsa rúcula","100 g cherrys","½ bola mozzarella light","200 g pollo"],
+      "cena": ["Ternera o cerdo 250 g","250 g setas con 30 g parmesano o jamón"]
+    }
+  ],
+  "compra": {
+    "Proteínas": [
+      {"n":"Pavo cocido","q":"700 g"},
+      {"n":"Pollo (muslos + pechuga)","q":"~700 g"},
+      {"n":"Pescado blanco","q":"250 g"},
+      {"n":"Pescado semigraso","q":"250 g"},
+      {"n":"Salmón o pescado azul","q":"200 g"},
+      {"n":"Sepia","q":"250 g"},
+      {"n":"Ternera o cerdo","q":"250 g"},
+      {"n":"Jamón serrano / cocido","q":"60 g"}
+    ],
+    "Huevos y lácteos": [
+      {"n":"Huevos","q":"10 u"},
+      {"n":"Yogur griego Pastoret","q":"700 g"},
+      {"n":"Yogur griego ligero","q":"2 uds"},
+      {"n":"Mozzarella light (bola)","q":"1 ud"},
+      {"n":"Cottage cheese","q":"20 g"},
+      {"n":"Feta","q":"50 g"},
+      {"n":"Parmesano","q":"30 g"},
+      {"n":"Natillas proteicas chocolate","q":"2 uds"}
+    ],
+    "Verduras": [
+      {"n":"Rúcula","q":"1 bolsa"},
+      {"n":"Bimi","q":"500 g"},
+      {"n":"Calabaza","q":"500 g"},
+      {"n":"Calabacín","q":"2 uds"},
+      {"n":"Cherrys","q":"150 g"},
+      {"n":"Cebolla","q":"3 uds"},
+      {"n":"Champiñones","q":"250 g"},
+      {"n":"Pimiento","q":"250 g"},
+      {"n":"Setas","q":"250 g"},
+      {"n":"Judías verdes","q":"350 g"},
+      {"n":"Patata","q":"200 g"}
+    ],
+    "Frutas": [
+      {"n":"Plátano de Canarias","q":"7 uds"},
+      {"n":"Mango","q":"450 g"},
+      {"n":"Naranjas (zumo)","q":"~10 uds"}
+    ],
+    "Carbohidratos": [
+      {"n":"Wasa Sesam","q":"~15 uds"},
+      {"n":"Tortitas de maíz","q":"6 uds"},
+      {"n":"Arroz","q":"100 g"},
+      {"n":"Fideos sopa","q":"20 g"}
+    ],
+    "Grasas y extras": [
+      {"n":"Aguacate","q":"~5 uds"},
+      {"n":"Anacardos","q":"15 g"},
+      {"n":"Salsa de soja","q":"pequeño"},
+      {"n":"Sésamo","q":"pequeño"},
+      {"n":"Curry en polvo","q":"pequeño"},
+      {"n":"Leche","q":"100 ml"},
+      {"n":"Pimentón","q":"pequeño"}
+    ],
+    "Legumbres": [
+      {"n":"Garbanzos cocidos","q":"100 g"}
+    ]
+  }
+}
