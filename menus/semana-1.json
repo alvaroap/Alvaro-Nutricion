@@ -1,0 +1,90 @@
+{
+  "id": "semana-1",
+  "label": "Semana 1",
+  "types": ["elements","elements","hyrox","descanso","hyrox","descanso","descanso"],
+  "days": [
+    {
+      "comida": ["Canónigos","100 g cherrys","100 g cebolla morada","150 g mango","40 g aguacate","200 g pollo","Verduras asadas (pimiento rojo, calabacín, brócoli) 250 g","200 g garbanzos cocidos","50 g Cottage","15 g frutos secos","1 huevo","60 g arroz"],
+      "cena": ["Verduras asadas (pimiento rojo, calabacín, brócoli) 250 g","250 g pescado blanco"]
+    },
+    {
+      "comida": ["Canónigos","100 g cherrys","150 g mango","150 g salmón con 1 cda soja y 1 cdita sésamo","50 g Cottage"],
+      "cena": ["250 g champiñones con 250 g gambas y 1 huevo","Verduras asadas (pimiento rojo, calabacín, brócoli) 250 g","250 g pollo"]
+    },
+    {
+      "comida": ["250 g pollo contramuslos","300 g pisto"],
+      "cena": ["Tortilla campesina: 2 huevos + 80 g maíz + 100 g cebolla + 30 g mozzarella"]
+    },
+    {
+      "comida": ["250 g pescado blanco","300 g pisto"],
+      "cena": ["Caldo o consomé","Huevos rotos: patata panadera 200 g + 100 g cebolla en juliana + 2 huevos plancha + 30 g jamón serrano"]
+    },
+    {
+      "comida": ["250 g pollo con pimentón y ajo","250 g alcachofas con 30 g jamón","1 fruta","15 g frutos secos"],
+      "cena": ["Lacón con pimentón 150 g","Caldo o consomé","2 huevos cocidos"]
+    },
+    {
+      "comida": ["Comida libre"],
+      "cena": ["Berenjena rellena: 1 berenjena + 50 g tomate frito natural + 1 huevo cocido + 1 lata atún + 30 g mozzarella gratinada"]
+    },
+    {
+      "comida": ["250 g pescado blanco","300 g verduras asadas (pimiento, calabacín, brócoli)"],
+      "cena": ["Caldo o consomé","Tortilla de 2 huevos con 30 g mozzarella"]
+    }
+  ],
+  "compra": {
+    "Proteínas": [
+      {"n":"Pavo cocido","q":"700 g"},
+      {"n":"Pollo (contramuslos + pechuga)","q":"~700 g"},
+      {"n":"Pescado blanco","q":"750 g"},
+      {"n":"Salmón","q":"150 g"},
+      {"n":"Gambas","q":"250 g"},
+      {"n":"Lacón","q":"150 g"},
+      {"n":"Jamón serrano","q":"60 g"},
+      {"n":"Atún natural (lata)","q":"2 latas"}
+    ],
+    "Huevos y lácteos": [
+      {"n":"Huevos","q":"10 u"},
+      {"n":"Yogur griego Pastoret","q":"700 g"},
+      {"n":"Cottage cheese","q":"100 g"},
+      {"n":"Mozzarella","q":"60 g"}
+    ],
+    "Verduras": [
+      {"n":"Canónigos","q":"2 bolsas"},
+      {"n":"Tomates cherry","q":"200 g"},
+      {"n":"Cebolla morada","q":"1 ud"},
+      {"n":"Cebolla","q":"1 ud"},
+      {"n":"Pimiento rojo","q":"3 uds"},
+      {"n":"Calabacín","q":"3 uds"},
+      {"n":"Brócoli","q":"600 g"},
+      {"n":"Champiñones","q":"250 g"},
+      {"n":"Alcachofas","q":"250 g"},
+      {"n":"Berenjena","q":"1 ud"},
+      {"n":"Pisto","q":"600 g"}
+    ],
+    "Frutas": [
+      {"n":"Plátano de Canarias","q":"7 uds"},
+      {"n":"Mango","q":"450 g"},
+      {"n":"Naranjas (zumo)","q":"~10 uds"},
+      {"n":"Fruta a elección","q":"1 ud"}
+    ],
+    "Carbohidratos": [
+      {"n":"Wasa Sesam","q":"~15 uds"},
+      {"n":"Tortitas de maíz","q":"6 uds"},
+      {"n":"Arroz","q":"60 g"},
+      {"n":"Maíz cocido","q":"80 g"},
+      {"n":"Patata","q":"200 g"}
+    ],
+    "Grasas y extras": [
+      {"n":"Aguacate","q":"~5 uds"},
+      {"n":"Frutos secos (pistachos)","q":"30 g"},
+      {"n":"Tomate frito natural","q":"50 g"},
+      {"n":"Salsa de soja","q":"1 botella"},
+      {"n":"Sésamo","q":"pequeño"},
+      {"n":"Pimentón","q":"pequeño"}
+    ],
+    "Legumbres": [
+      {"n":"Garbanzos cocidos","q":"200 g"}
+    ]
+  }
+}
