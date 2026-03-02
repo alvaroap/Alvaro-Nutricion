@@ -8,75 +8,72 @@
       "cena": ["Pescado semigraso 250 g con rodajas de limón y 100 g cebolla","Caldo o consomé 300 ml"]
     },
     {
-      "comida": ["Bolsa rúcula","200 g lentejas","200 g remolacha","1 bola mozzarella light","100 g pollo","15 g frutos secos"],
-      "cena": ["300 ml puré de verduras","Tortilla de 2 huevos con 30 g mozzarella y 30 g jamón cocido extra"]
+      "comida": ["Bolsa rúcula","200 g lentejas","1 bola mozzarella light","100 g pollo","15 g frutos secos"],
+      "cena": ["300 ml puré","Tortilla: 2 huevos + 30 g mozzarella + 30 g jamón cocido extra"]
     },
     {
       "comida": ["100 g noodles de arroz","200 g pimiento y cebolla","200 g pollo","50 g tomate frito natural"],
-      "cena": ["Pescado blanco 250 g","Brócoli al vapor 250 g"]
+      "cena": ["250 g pescado blanco","Brócoli al vapor 250 g"]
     },
     {
       "comida": ["Acelgas rehogadas 300 g","60 g jamón serrano","2 huevos cocidos"],
-      "cena": ["Salmón o pescado azul 180 g","250 g setas con ajo y perejil","Patata cocida machacada con 100 g cebolleta y 30 g mozzarella"]
+      "cena": ["Salmón o pescado azul 180 g","250 g setas"]
     },
     {
-      "comida": ["Wok: 200 g pollo + 300 g brócoli, calabacín y cebolla + 1 cda soja + 1 cdita sésamo + 15 g frutos secos","100 g arroz"],
-      "cena": ["Pulpo 200 g o sepia","250 g tomate + 100 g cebolla","120 g queso fresco","1 lata atún natural"]
+      "comida": ["Wok: 200 g pollo + 300 g brócoli y calabacín + 1 cda soja + 1 cdita sésamo + 15 g frutos secos"],
+      "cena": ["Patata cocida machacada con 100 g cebolleta y 30 g mozzarella o parmesano","Pulpo o sepia 200 g"]
     },
     {
       "comida": ["Comida libre"],
-      "cena": ["300 ml puré de verduras","Tortilla de 2 huevos con 30 g mozzarella y 30 g jamón cocido extra"]
+      "cena": ["250 g tomate","100 g cebolla","120 g queso fresco","1 lata atún natural"]
     },
     {
-      "comida": ["Bastones de calabaza 200 g con mozzarella o parmesano","100 g brócoli","200 g pavo o pollo a la plancha"],
-      "cena": ["Caldo o consomé","2 huevos cocidos con 250 g espinacas rehogadas con ajo"]
+      "comida": ["Bastones de calabaza 200 g con mozzarella o parmesano","100 g brócoli","200 g carne roja"],
+      "cena": ["300 ml puré","Tortilla: 2 huevos + 30 g mozzarella + 30 g jamón cocido extra"]
     }
   ],
   "compra": {
     "Proteínas": [
       {"n":"Pavo cocido","q":"700 g"},
       {"n":"Pollo","q":"~500 g"},
-      {"n":"Pavo o pollo a la plancha","q":"200 g"},
       {"n":"Lomo de cerdo o solomillo","q":"200 g"},
       {"n":"Pescado blanco","q":"250 g"},
       {"n":"Pescado semigraso (dorada/lubina)","q":"250 g"},
       {"n":"Salmón o pescado azul","q":"180 g"},
       {"n":"Pulpo o sepia","q":"200 g"},
+      {"n":"Carne roja","q":"200 g"},
       {"n":"Jamón serrano","q":"60 g"},
       {"n":"Jamón cocido extra","q":"60 g"},
       {"n":"Atún natural (lata)","q":"1 lata"}
     ],
     "Huevos y lácteos": [
-      {"n":"Huevos","q":"10 u"},
-      {"n":"Yogur griego Pastoret","q":"700 g"},
+      {"n":"Huevos","q":"8 u"},
+      {"n":"Yogur griego","q":"100 g"},
       {"n":"Mozzarella light (bola)","q":"1 ud"},
-      {"n":"Mozzarella / parmesano","q":"60 g"},
+      {"n":"Mozzarella o parmesano","q":"90 g"},
       {"n":"Queso fresco","q":"120 g"}
     ],
     "Verduras": [
       {"n":"Rúcula","q":"1 bolsa"},
       {"n":"Acelgas","q":"600 g"},
-      {"n":"Espinacas","q":"250 g"},
-      {"n":"Brócoli","q":"500 g"},
+      {"n":"Brócoli","q":"400 g"},
       {"n":"Calabacín","q":"2 uds"},
-      {"n":"Cebolla","q":"3 uds"},
+      {"n":"Cebolla","q":"2 uds"},
       {"n":"Cebolleta","q":"100 g"},
       {"n":"Pimiento","q":"200 g"},
       {"n":"Setas","q":"250 g"},
-      {"n":"Remolacha","q":"200 g"},
       {"n":"Tomate","q":"250 g"},
       {"n":"Calabaza","q":"200 g"}
     ],
     "Frutas": [
       {"n":"Plátano de Canarias","q":"7 uds"},
       {"n":"Naranjas (zumo)","q":"~10 uds"},
-      {"n":"Fruta a elección","q":"1 ud"}
+      {"n":"Fruta a elección","q":"4 uds"}
     ],
     "Carbohidratos": [
-      {"n":"Wasa Sesam","q":"~15 uds"},
-      {"n":"Tortitas de maíz","q":"8 uds"},
+      {"n":"Wasa Sesam","q":"~20 uds"},
+      {"n":"Tortitas de maíz","q":"6 uds"},
       {"n":"Noodles de arroz","q":"100 g"},
-      {"n":"Arroz","q":"100 g"},
       {"n":"Patata","q":"1 ud mediana"}
     ],
     "Grasas y extras": [
@@ -84,7 +81,8 @@
       {"n":"Frutos secos","q":"15 g"},
       {"n":"Tomate frito natural","q":"50 g"},
       {"n":"Salsa de soja","q":"pequeño"},
-      {"n":"Sésamo","q":"pequeño"}
+      {"n":"Sésamo","q":"pequeño"},
+      {"n":"AOVE","q":"uso semanal"}
     ],
     "Legumbres": [
       {"n":"Lentejas cocidas","q":"200 g"}
