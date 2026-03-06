@@ -367,6 +367,7 @@ let currentMenuId = null;
 let currentMenu = null;
 let dayTypes = {};
 let checked = {};
+let listChecked = {};
 let extras = {};   // extras[cat] = [{n, q, id}]
 let compraView = 'all'; // 'all' | 'list'
 let sheetIdx = null;
@@ -378,11 +379,12 @@ function loadState() {
     if (s.currentMenuId) currentMenuId = s.currentMenuId;
     if (s.dayTypes)      dayTypes      = s.dayTypes;
     if (s.checked)       checked       = s.checked;
+    if (s.listChecked)   listChecked   = s.listChecked;
     if (s.extras)        extras        = s.extras;
   } catch(e) {}
 }
 function save() {
-  localStorage.setItem('alvnut_v3', JSON.stringify({ currentMenuId, dayTypes, checked, extras }));
+  localStorage.setItem('alvnut_v3', JSON.stringify({ currentMenuId, dayTypes, checked, listChecked, extras }));
 }
 
 function todayIndex() {
@@ -540,7 +542,7 @@ function renderCompra() {
     items.forEach((it, idx) => {
       const key = `${currentMenuId}_${cat}_${idx}`;
       allItems[cat] = allItems[cat] || [];
-      allItems[cat].push({ n: it.n, q: it.q, key, isExtra: false });
+      allItems[cat].push({ n: it.n, q: it.q, key, isExtra: false, listChecked: !!listChecked[key] });
     });
   });
 
@@ -549,7 +551,7 @@ function renderCompra() {
     items.forEach(it => {
       const key = `extra_${it.id}`;
       allItems[cat] = allItems[cat] || [];
-      allItems[cat].push({ n: it.n, q: it.q, key, isExtra: true, extraId: it.id });
+      allItems[cat].push({ n: it.n, q: it.q, key, isExtra: true, extraId: it.id, listChecked: !!listChecked[key] });
     });
   });
 
@@ -564,13 +566,16 @@ function renderCompra() {
     if (items.length === 0) return;
     html += `<div class="cat-card">
       <div class="cat-label">${cat}</div>
-      ${items.map(it => `
-        <div class="c-item ${checked[it.key] ? 'done' : ''}" onclick="toggleItem('${it.key}',this)">
+      ${items.map(it => {
+        const isDone = compraView === 'list' ? !!it.listChecked : !!checked[it.key];
+        return `
+        <div class="c-item ${isDone ? 'done' : ''}" onclick="toggleItem('${it.key}',this,'${compraView}')">
           <div class="c-box"><span class="c-check-icon">✓</span></div>
           <div class="c-name">${it.n}</div>
-          <div class="c-qty">${it.q}</div>
+          <div class="c-qty">${it.q !== '—' ? it.q : ''}</div>
           ${it.isExtra ? `<button class="c-del" onclick="deleteExtra('${it.extraId}','${cat}',event)">×</button>` : ''}
-        </div>`).join('')}
+        </div>`;
+      }).join('')}
     </div>`;
   });
 
@@ -581,14 +586,20 @@ function renderCompra() {
   document.getElementById('compra-list').innerHTML = html;
 }
 
-function toggleItem(key, el) {
-  checked[key] = !checked[key];
-  el.classList.toggle('done', checked[key]);
+function toggleItem(key, el, view) {
+  if (view === 'list') {
+    listChecked[key] = !listChecked[key];
+    el.classList.toggle('done', listChecked[key]);
+  } else {
+    checked[key] = !checked[key];
+    el.classList.toggle('done', checked[key]);
+  }
   save();
 }
 
 function resetCompra() {
   Object.keys(checked).forEach(k => { delete checked[k]; });
+  Object.keys(listChecked).forEach(k => { delete listChecked[k]; });
   save();
   renderCompra();
 }
