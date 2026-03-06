@@ -281,7 +281,7 @@
       <button class="vt-btn on" id="vt-all" onclick="setCompraView('all')">Todo</button>
       <button class="vt-btn"    id="vt-list" onclick="setCompraView('list')">Mi lista</button>
     </div>
-    <button class="reset-btn" onclick="resetCompra()">↺ Desmarcar</button>
+    <button class="reset-btn" onclick="resetCompra()">↺ Eliminar lista</button>
   </div>
 
   <!-- Añadir producto extra -->
@@ -558,7 +558,8 @@ function renderCompra() {
   ALL_CATS.forEach(cat => {
     let items = allItems[cat] || [];
     if (compraView === 'list') {
-      items = items.filter(it => !!checked[it.key]);
+      // En Mi lista: mostrar extras siempre + items del menú marcados
+      items = items.filter(it => it.isExtra || !!checked[it.key]);
     }
     if (items.length === 0) return;
     html += `<div class="cat-card">
@@ -584,7 +585,6 @@ function toggleItem(key, el) {
   checked[key] = !checked[key];
   el.classList.toggle('done', checked[key]);
   save();
-  if (compraView === 'list' && !checked[key]) renderCompra();
 }
 
 function resetCompra() {
@@ -603,7 +603,7 @@ function addExtra() {
   const cat = catEl.value;
   if (!n) { nameEl.focus(); return; }
   if (!extras[cat]) extras[cat] = [];
-  extras[cat].push({ n, q, id: Date.now() + Math.random() });
+  extras[cat].push({ n, q, id: String(Date.now()) });
   nameEl.value = ''; qtyEl.value = '';
   nameEl.focus();
   save();
@@ -612,8 +612,7 @@ function addExtra() {
 
 function deleteExtra(id, cat, e) {
   e.stopPropagation();
-  const idNum = parseFloat(id);
-  if (extras[cat]) extras[cat] = extras[cat].filter(it => it.id !== idNum);
+  if (extras[cat]) extras[cat] = extras[cat].filter(it => String(it.id) !== String(id));
   const key = `extra_${id}`;
   delete checked[key];
   save();
