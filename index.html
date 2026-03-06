@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0043)file:///Users/alvaro/Downloads/index_1.html -->
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="es">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Álvaro · Nutrición</title>
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link href="./Álvaro · Nutrición_files/css2" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:        #0D1119;
@@ -17,9 +17,9 @@
     --lime:      #E8FCBF;
     --lime-dark: #c8f135;
     --text:      #F4F5FC;
-    --text2:     #9095b0;
-    --muted:     #555a72;
-    --border:    rgba(255,255,255,.06);
+    --text2:     #C8CCE0;
+    --muted:     #7a8099;
+    --border:    rgba(255,255,255,.08);
     --elements:  #9C98F6;
     --hyrox:     #F29DA2;
     --descanso:  #E8FCBF;
@@ -27,19 +27,12 @@
   }
 
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', -apple-system, sans-serif;
-    min-height: 100vh;
-  }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', -apple-system, sans-serif; min-height: 100vh; }
 
   /* ── Header ── */
   header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(13,17,25,.92);
-    backdrop-filter: blur(20px);
+    background: rgba(13,17,25,.92); backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 14px 20px;
     display: flex; align-items: center; justify-content: space-between;
@@ -47,43 +40,14 @@
   .logo { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -.3px; }
   .logo span { color: var(--lavender); }
 
-  /* ── Week switcher ── */
-  .week-switcher {
-    display: flex; align-items: center;
-    background: var(--surface2);
-    border-radius: 100px;
-    padding: 4px;
-    gap: 2px;
-  }
-  .week-btn {
-    font-family: inherit; font-size: 12px; font-weight: 700;
-    padding: 6px 16px; border-radius: 100px; border: none;
-    cursor: pointer; transition: all .2s;
-    background: none; color: var(--text2);
-  }
-  .week-btn.on {
-    background: var(--lime);
-    color: #1a1d2e;
-  }
+  .week-switcher { display: flex; align-items: center; background: var(--surface2); border-radius: 100px; padding: 4px; gap: 2px; }
+  .week-btn { font-family: inherit; font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 100px; border: none; cursor: pointer; transition: all .2s; background: none; color: var(--text2); }
+  .week-btn.on { background: var(--lime); color: #1a1d2e; }
   .week-btn:active { filter: brightness(.92); }
 
   /* ── Nav ── */
-  nav {
-    display: flex;
-    background: rgba(13,17,25,.92);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    padding: 8px 12px;
-    gap: 6px;
-  }
-  .tab {
-    flex: 1; background: none; border: none;
-    border-radius: 12px;
-    color: var(--text2);
-    font-family: inherit; font-size: 13px; font-weight: 600;
-    padding: 10px 10px; cursor: pointer; text-align: center;
-    transition: all .2s;
-  }
+  nav { display: flex; background: rgba(13,17,25,.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 8px 12px; gap: 6px; }
+  .tab { flex: 1; background: none; border: none; border-radius: 12px; color: var(--text2); font-family: inherit; font-size: 13px; font-weight: 600; padding: 10px; cursor: pointer; text-align: center; transition: all .2s; }
   .tab.on { background: var(--lime); color: #1a1d2e; }
 
   /* ── Views ── */
@@ -92,119 +56,57 @@
   #v-semana, #v-compra, #v-info { padding: 20px 16px 100px; }
 
   /* ── Section head ── */
-  .section-head {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 20px;
-  }
+  .section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
   .section-title { font-size: 24px; font-weight: 800; letter-spacing: -.5px; color: var(--text); }
-  .count-pill {
-    font-size: 12px; font-weight: 700;
-    background: var(--surface2); color: var(--text2);
-    padding: 6px 14px; border-radius: 100px;
-  }
+  .count-pill { font-size: 12px; font-weight: 700; background: var(--surface2); color: var(--text2); padding: 6px 14px; border-radius: 100px; }
 
   /* ── Day card ── */
-  .day-card {
-    border-radius: 22px; margin-bottom: 12px;
-    overflow: hidden;
-    background: var(--surface);
-    box-shadow: var(--shadow);
-    animation: fadeUp .3s ease both;
-    transition: box-shadow .2s;
-  }
+  .day-card { border-radius: 22px; margin-bottom: 12px; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); animation: fadeUp .3s ease both; transition: box-shadow .2s; }
   .day-card.open { box-shadow: 0 8px 40px rgba(0,0,0,.5); }
-
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(10px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
   .day-card:nth-child(1){animation-delay:.03s} .day-card:nth-child(2){animation-delay:.06s}
   .day-card:nth-child(3){animation-delay:.09s} .day-card:nth-child(4){animation-delay:.12s}
   .day-card:nth-child(5){animation-delay:.15s} .day-card:nth-child(6){animation-delay:.18s}
   .day-card:nth-child(7){animation-delay:.21s}
 
-  .day-band {
-    padding: 18px 20px 16px;
-    display: flex; align-items: flex-start; justify-content: space-between;
-    transition: background .3s; position: relative;
-  }
+  .day-band { padding: 18px 20px 16px; display: flex; align-items: flex-start; justify-content: space-between; transition: background .3s; }
   .day-band.elements { background: var(--elements); }
   .day-band.hyrox    { background: var(--hyrox); }
   .day-band.descanso { background: var(--descanso); }
-
   .band-left { display: flex; flex-direction: column; gap: 8px; }
   .day-name { font-size: 20px; font-weight: 800; letter-spacing: -.4px; line-height: 1; color: #1a1d2e; }
-
-  .type-pill {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-family: inherit; font-size: 11px; font-weight: 700;
-    padding: 5px 12px; border-radius: 100px; border: none;
-    cursor: pointer; transition: filter .15s;
-    background: rgba(255,255,255,.28); color: #1a1d2e;
-  }
+  .type-pill { display: inline-flex; align-items: center; gap: 4px; font-family: inherit; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 100px; border: none; cursor: pointer; transition: filter .15s; background: rgba(255,255,255,.28); color: #1a1d2e; }
   .type-pill:active { filter: brightness(.9); }
-
   .band-right { display: flex; align-items: center; gap: 10px; }
   .kcal-block { text-align: right; }
   .kcal-num { font-size: 26px; font-weight: 800; letter-spacing: -.6px; line-height: 1; color: #1a1d2e; }
   .kcal-unit { font-size: 10px; font-weight: 600; color: rgba(26,29,46,.55); margin-top: 2px; }
-
-  .expand-btn {
-    background: rgba(0,0,0,.15);
-    border: none; width: 34px; height: 34px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; color: rgba(26,29,46,.7); transition: background .2s; flex-shrink:0;
-  }
+  .expand-btn { background: rgba(0,0,0,.15); border: none; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(26,29,46,.7); transition: background .2s; flex-shrink:0; }
   .expand-btn:hover { background: rgba(0,0,0,.25); }
   .expand-btn svg { transition: transform .3s; }
   .day-card.open .expand-btn svg { transform: rotate(180deg); }
-
-  /* ── Day body ── */
   .day-body { display: none; background: var(--surface); }
   .day-card.open .day-body { display: block; }
-
   .meal { padding: 14px 20px; border-bottom: 1px solid var(--border); }
   .meal:last-child { border-bottom: none; }
-  .meal-label {
-    font-size: 10px; font-weight: 700; letter-spacing: .7px;
-    color: var(--muted); text-transform: uppercase; margin-bottom: 10px;
-  }
-  .meal-item {
-    font-size: 13.5px; font-weight: 400; line-height: 1.55; color: var(--text2);
-    padding: 4px 0 4px 12px;
-    border-left: 2px solid var(--surface3);
-    margin-bottom: 4px;
-  }
+  .meal-label { font-size: 10px; font-weight: 700; letter-spacing: .7px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
+  .meal-item { font-size: 13.5px; font-weight: 400; line-height: 1.55; color: var(--text2); padding: 4px 0 4px 12px; border-left: 2px solid var(--surface3); margin-bottom: 4px; }
   .meal-item:last-child { margin-bottom: 0; }
   .meal-item.libre { color: var(--lime-dark); border-left-color: var(--lime-dark); font-weight: 600; }
   .meal-empty { font-size: 13px; color: var(--muted); font-style: italic; padding-left: 12px; }
 
   /* ── Bottom sheet ── */
-  .overlay {
-    display: none; position: fixed; inset: 0; z-index: 500;
-    background: rgba(0,0,0,.6); backdrop-filter: blur(6px);
-  }
+  .overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,.6); backdrop-filter: blur(6px); }
   .overlay.open { display: flex; align-items: flex-end; }
-  .sheet {
-    width: 100%; background: var(--surface);
-    border-radius: 28px 28px 0 0;
-    padding: 0 0 52px;
-    transform: translateY(100%);
-    transition: transform .32s cubic-bezier(.32,1,.23,1);
-    box-shadow: 0 -12px 60px rgba(0,0,0,.6);
-  }
+  .sheet { width: 100%; background: var(--surface); border-radius: 28px 28px 0 0; padding: 0 0 52px; transform: translateY(100%); transition: transform .32s cubic-bezier(.32,1,.23,1); box-shadow: 0 -12px 60px rgba(0,0,0,.6); }
   .overlay.open .sheet { transform: translateY(0); }
   .sheet-handle-wrap { padding: 14px; display: flex; justify-content: center; }
   .sheet-handle { width: 40px; height: 4px; background: var(--surface3); border-radius: 2px; }
   .sheet-head { padding: 4px 22px 18px; border-bottom: 1px solid var(--border); }
   .sheet-sublabel { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .5px; margin-bottom: 3px; }
-  .sheet-dayname  { font-size: 22px; font-weight: 800; letter-spacing: -.4px; color: var(--text); }
+  .sheet-dayname { font-size: 22px; font-weight: 800; letter-spacing: -.4px; color: var(--text); }
   .sheet-options { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
-  .sheet-opt {
-    display: flex; align-items: center; gap: 14px;
-    padding: 16px 18px; border-radius: 18px; cursor: pointer;
-    background: var(--surface2); border: 2px solid transparent; transition: all .15s;
-  }
+  .sheet-opt { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 18px; cursor: pointer; background: var(--surface2); border: 2px solid transparent; transition: all .15s; }
   .sheet-opt:active { transform: scale(.98); }
   .sheet-opt.selected.elements { border-color: var(--elements); background: rgba(156,152,246,.1); }
   .sheet-opt.selected.hyrox    { border-color: var(--hyrox);    background: rgba(242,157,162,.1); }
@@ -219,66 +121,90 @@
   .sheet-opt.hyrox    .s-name { color: var(--hyrox); }
   .sheet-opt.descanso .s-name { color: var(--descanso); }
   .s-kcal { font-size: 12px; font-weight: 500; color: var(--muted); margin-top: 2px; }
-  .s-check {
-    width: 26px; height: 26px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 800; color: #1a1d2e;
-    background: var(--lime); opacity: 0; transition: opacity .15s;
-  }
+  .s-check { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #1a1d2e; background: var(--lime); opacity: 0; transition: opacity .15s; }
   .sheet-opt.selected .s-check { opacity: 1; }
-  .sheet-cancel {
-    margin: 4px 16px 0; padding: 15px; width: calc(100% - 32px);
-    background: var(--surface2); border: none;
-    border-radius: 18px; color: var(--text2);
-    font-family: inherit; font-size: 14px; font-weight: 600;
-    cursor: pointer; transition: background .2s;
-  }
+  .sheet-cancel { margin: 4px 16px 0; padding: 15px; width: calc(100% - 32px); background: var(--surface2); border: none; border-radius: 18px; color: var(--text2); font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s; }
   .sheet-cancel:hover { background: var(--surface3); }
 
   /* ── Compra ── */
-  .reset-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--surface2); border: none;
-    color: var(--text2); font-family: inherit; font-size: 12px; font-weight: 600;
-    padding: 9px 18px; border-radius: 100px; cursor: pointer; margin-bottom: 18px;
-    transition: background .2s;
+  .compra-toolbar {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
   }
+  .view-toggle {
+    display: flex; background: var(--surface2); border-radius: 100px; padding: 3px; gap: 2px;
+  }
+  .vt-btn {
+    font-family: inherit; font-size: 12px; font-weight: 700;
+    padding: 6px 14px; border-radius: 100px; border: none;
+    cursor: pointer; transition: all .2s; background: none; color: var(--text2);
+  }
+  .vt-btn.on { background: var(--lime); color: #1a1d2e; }
+
+  .reset-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--surface2); border: none; color: var(--text2); font-family: inherit; font-size: 12px; font-weight: 600; padding: 9px 16px; border-radius: 100px; cursor: pointer; transition: background .2s; margin-left: auto; }
   .reset-btn:hover { background: var(--surface3); }
+
+  /* ── Add item form ── */
+  .add-item-form {
+    background: var(--surface); border-radius: 20px; padding: 16px; margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .add-item-form .form-title {
+    font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .5px;
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+  .add-row { display: flex; gap: 8px; margin-bottom: 8px; }
+  .add-input {
+    flex: 1; background: var(--surface2); border: 1.5px solid var(--surface3);
+    border-radius: 12px; padding: 10px 14px;
+    color: var(--text); font-family: inherit; font-size: 14px; font-weight: 500;
+    outline: none; transition: border-color .2s;
+  }
+  .add-input:focus { border-color: var(--lavender); }
+  .add-input::placeholder { color: var(--muted); }
+  .add-input.qty { width: 90px; flex: none; }
+  .add-select {
+    background: var(--surface2); border: 1.5px solid var(--surface3);
+    border-radius: 12px; padding: 10px 14px;
+    color: var(--text); font-family: inherit; font-size: 14px; font-weight: 500;
+    outline: none; cursor: pointer; transition: border-color .2s;
+    appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%237a8099' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center;
+    padding-right: 32px; width: 100%;
+  }
+  .add-select:focus { border-color: var(--lavender); }
+  .add-select option { background: var(--surface2); }
+  .add-btn {
+    background: var(--lavender); color: #1a1d2e;
+    font-family: inherit; font-size: 14px; font-weight: 700;
+    border: none; border-radius: 12px; padding: 10px 20px;
+    cursor: pointer; transition: filter .15s; white-space: nowrap;
+  }
+  .add-btn:active { filter: brightness(.9); }
+
+  /* ── Lista compra ── */
   .cat-card { background: var(--surface); border-radius: 20px; margin-bottom: 12px; overflow: hidden; box-shadow: var(--shadow); }
-  .cat-label {
-    padding: 12px 18px; font-size: 11px; font-weight: 700; color: var(--text2);
-    letter-spacing: .5px; background: var(--surface2); border-bottom: 1px solid var(--border);
-  }
-  .c-item {
-    display: flex; align-items: center; gap: 14px;
-    padding: 13px 18px; border-bottom: 1px solid var(--border);
-    cursor: pointer; transition: opacity .25s, background .15s;
-  }
+  .cat-label { padding: 12px 18px; font-size: 11px; font-weight: 700; color: var(--text2); letter-spacing: .5px; background: var(--surface2); border-bottom: 1px solid var(--border); text-transform: uppercase; }
+  .c-item { display: flex; align-items: center; gap: 14px; padding: 13px 18px; border-bottom: 1px solid var(--border); cursor: pointer; transition: opacity .25s, background .15s; }
   .c-item:last-child { border-bottom: none; }
   .c-item:active { background: var(--surface2); }
-  .c-item.done { opacity: .3; }
-  .c-box {
-    width: 22px; height: 22px; border: 1.5px solid var(--surface3);
-    border-radius: 7px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center; transition: all .2s;
-  }
+  .c-item.done { opacity: .35; }
+  .c-box { width: 22px; height: 22px; border: 1.5px solid var(--surface3); border-radius: 7px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .2s; }
   .c-item.done .c-box { background: var(--lime); border-color: var(--lime); }
   .c-check-icon { display: none; font-size: 12px; color: #1a1d2e; font-weight: 800; }
   .c-item.done .c-check-icon { display: block; }
-  .c-item.done .c-name { text-decoration: line-through; color: var(--muted); }
-  .c-name { flex: 1; font-size: 14px; font-weight: 400; color: var(--text2); }
-  .c-qty  { font-size: 12px; font-weight: 600; color: var(--muted); }
+  .c-item.done .c-name { text-decoration: line-through; }
+  .c-name { flex: 1; font-size: 14px; font-weight: 500; color: var(--text); }
+  .c-qty  { font-size: 13px; font-weight: 600; color: var(--text2); }
+  .c-del  { background: none; border: none; color: var(--muted); font-size: 16px; cursor: pointer; padding: 2px 4px; line-height: 1; transition: color .15s; }
+  .c-del:hover { color: var(--salmon); }
+
+  /* ── Mi lista (vista filtrada) ── */
+  .mi-lista-empty { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; }
 
   /* ── Loading ── */
-  .loading {
-    display: flex; align-items: center; justify-content: center;
-    padding: 60px 20px; color: var(--muted); font-size: 14px; gap: 10px;
-  }
-  .spinner {
-    width: 18px; height: 18px; border: 2px solid var(--surface3);
-    border-top-color: var(--lavender); border-radius: 50%;
-    animation: spin .6s linear infinite;
-  }
+  .loading { display: flex; align-items: center; justify-content: center; padding: 60px 20px; color: var(--muted); font-size: 14px; gap: 10px; }
+  .spinner { width: 18px; height: 18px; border: 2px solid var(--surface3); border-top-color: var(--lavender); border-radius: 50%; animation: spin .6s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
   /* ── Perfil ── */
@@ -286,13 +212,11 @@
   .i-card { background: var(--surface); border-radius: 20px; padding: 18px; box-shadow: var(--shadow); }
   .i-card.full { grid-column: 1/-1; }
   .i-card.accent-lavender { background: var(--lavender); }
-  .i-card.accent-lavender .i-label { color: rgba(26,29,46,.55); }
-  .i-card.accent-lavender .i-val   { color: #1a1d2e; }
-  .i-card.accent-lavender .i-unit  { color: rgba(26,29,46,.55); }
+  .i-card.accent-lavender .i-label,.i-card.accent-lavender .i-unit { color: rgba(26,29,46,.55); }
+  .i-card.accent-lavender .i-val { color: #1a1d2e; }
   .i-card.accent-salmon { background: var(--salmon); }
-  .i-card.accent-salmon .i-label { color: rgba(26,29,46,.55); }
-  .i-card.accent-salmon .i-val   { color: #1a1d2e; }
-  .i-card.accent-salmon .i-unit  { color: rgba(26,29,46,.55); }
+  .i-card.accent-salmon .i-label,.i-card.accent-salmon .i-unit { color: rgba(26,29,46,.55); }
+  .i-card.accent-salmon .i-val { color: #1a1d2e; }
   .i-label { font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: .6px; text-transform: uppercase; margin-bottom: 8px; }
   .i-val   { font-size: 34px; font-weight: 800; letter-spacing: -.6px; line-height: 1; color: var(--text); }
   .i-unit  { font-size: 12px; font-weight: 500; color: var(--text2); margin-top: 4px; }
@@ -310,11 +234,6 @@
   .goal-text { font-size: 13.5px; font-weight: 400; line-height: 1.7; color: var(--text2); margin-top: 6px; }
   .goal-text strong { color: var(--text); font-weight: 700; }
   .goal-text small  { font-size: 11px; color: var(--muted); font-weight: 500; display: block; margin-top: 8px; }
-
-  @media(min-width:600px){
-    header, nav { padding-left: 28px; padding-right: 28px; }
-    #v-semana, #v-compra, #v-info { padding-left: 28px; padding-right: 28px; }
-  }
 </style>
 </head>
 <body>
@@ -322,15 +241,15 @@
 <header>
   <div class="logo">Álvaro · <span>Nutrición</span></div>
   <div class="week-switcher" id="weekSwitcher">
-    <button class="week-btn" id="btn-semana-1" onclick="loadMenu(&#39;semana-1&#39;)">S1</button>
-    <button class="week-btn" id="btn-semana-2" onclick="loadMenu(&#39;semana-2&#39;)">S2</button>
+    <button class="week-btn" id="btn-semana-1" onclick="loadMenu('semana-1')">S1</button>
+    <button class="week-btn" id="btn-semana-2" onclick="loadMenu('semana-2')">S2</button>
   </div>
 </header>
 
 <nav>
-  <button class="tab on" onclick="showTab(&#39;semana&#39;,this)">Menú</button>
-  <button class="tab" onclick="showTab(&#39;compra&#39;,this)">Compra</button>
-  <button class="tab" onclick="showTab(&#39;info&#39;,this)">Perfil</button>
+  <button class="tab on" onclick="showTab('semana',this)">Menú</button>
+  <button class="tab"    onclick="showTab('compra',this)">Compra</button>
+  <button class="tab"    onclick="showTab('info',this)">Perfil</button>
 </nav>
 
 <!-- Bottom sheet -->
@@ -346,15 +265,50 @@
   </div>
 </div>
 
-<div id="v-semana" class="view on"><div class="loading">⚠️ No se pudo cargar menu-index.json</div></div>
+<div id="v-semana" class="view on">
+  <div class="loading"><div class="spinner"></div> Cargando menú…</div>
+</div>
 
 <div id="v-compra" class="view">
   <div class="section-head">
-    <div class="section-title">Lista de la compra</div>
+    <div class="section-title">Compra</div>
     <div class="count-pill" id="compra-badge"></div>
   </div>
-  <button class="reset-btn" onclick="resetCompra()">↺ Desmarcar todo</button>
-  <div id="compra-list"><div class="loading"><div class="spinner"></div> Cargando…</div></div>
+
+  <!-- Toolbar: toggle vista + reset -->
+  <div class="compra-toolbar">
+    <div class="view-toggle">
+      <button class="vt-btn on" id="vt-all" onclick="setCompraView('all')">Todo</button>
+      <button class="vt-btn"    id="vt-list" onclick="setCompraView('list')">Mi lista</button>
+    </div>
+    <button class="reset-btn" onclick="resetCompra()">↺ Desmarcar</button>
+  </div>
+
+  <!-- Añadir producto extra -->
+  <div class="add-item-form">
+    <div class="form-title">Añadir producto</div>
+    <div class="add-row">
+      <input class="add-input" id="add-name" type="text" placeholder="Nombre del producto" onkeydown="if(event.key==='Enter')addExtra()">
+      <input class="add-input qty" id="add-qty" type="text" placeholder="Cantidad" onkeydown="if(event.key==='Enter')addExtra()">
+    </div>
+    <div class="add-row">
+      <select class="add-select" id="add-cat">
+        <option value="Proteínas">Proteínas</option>
+        <option value="Huevos y lácteos">Huevos y lácteos</option>
+        <option value="Verduras">Verduras</option>
+        <option value="Frutas">Frutas</option>
+        <option value="Carbohidratos">Carbohidratos</option>
+        <option value="Grasas y extras">Grasas y extras</option>
+        <option value="Legumbres">Legumbres</option>
+        <option value="Bebidas">Bebidas</option>
+        <option value="Limpieza">Limpieza</option>
+        <option value="Otros">Otros</option>
+      </select>
+      <button class="add-btn" onclick="addExtra()">+ Añadir</button>
+    </div>
+  </div>
+
+  <div id="compra-list"></div>
 </div>
 
 <div id="v-info" class="view">
@@ -384,24 +338,15 @@
     </div>
     <div class="i-card full">
       <div class="i-label">Calorías por tipo de jornada</div>
-      <div class="kcal-row">
-        <div class="kcal-tipo"><div class="tipo-dot elements"></div>Elements</div>
-        <div class="kcal-val elements">1.600 kcal</div>
-      </div>
-      <div class="kcal-row">
-        <div class="kcal-tipo"><div class="tipo-dot hyrox"></div>Hyrox</div>
-        <div class="kcal-val hyrox">1.900 kcal</div>
-      </div>
-      <div class="kcal-row">
-        <div class="kcal-tipo"><div class="tipo-dot descanso"></div>Descanso</div>
-        <div class="kcal-val descanso">1.500 kcal</div>
-      </div>
+      <div class="kcal-row"><div class="kcal-tipo"><div class="tipo-dot elements"></div>Elements</div><div class="kcal-val elements">1.600 kcal</div></div>
+      <div class="kcal-row"><div class="kcal-tipo"><div class="tipo-dot hyrox"></div>Hyrox</div><div class="kcal-val hyrox">1.900 kcal</div></div>
+      <div class="kcal-row"><div class="kcal-tipo"><div class="tipo-dot descanso"></div>Descanso</div><div class="kcal-val descanso">1.500 kcal</div></div>
     </div>
     <div class="i-card full">
       <div class="i-label">Objetivo</div>
       <div class="goal-text">
         Pérdida de grasa manteniendo el peso actual de <strong>70 kg</strong> mediante déficit calórico adaptado al tipo de entreno diario.
-        <small>Semana A = 4 entrenos · Semana B = 5 entrenos (sábado Elements)</small>
+        <small>Semana A = 4 entrenos · Semana B = 5 entrenos</small>
       </div>
     </div>
   </div>
@@ -411,46 +356,48 @@
 const DAY_NAMES  = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
 const TYPE_LABEL = { elements:"Elements", hyrox:"Hyrox", descanso:"Descanso" };
 const TYPE_KCAL  = { elements:1600, hyrox:1900, descanso:1500 };
-
 const DESAYUNO = {
   entreno:  ["3 Wasa Sesam","40 g aguacate","100 g pavo cocido","Batido: 250 ml zumo naranja + 100 g plátano + 100 g yogur griego"],
   descanso: ["Café o té","2 tortitas de maíz o pan tipo Wasa","2 rodajas de tomate","40 g aguacate","1 huevo revuelto","1 fruta"]
 };
+const ALL_CATS = ["Proteínas","Huevos y lácteos","Verduras","Frutas","Carbohidratos","Grasas y extras","Legumbres","Bebidas","Limpieza","Otros"];
 
 let menuIndex = [];
 let currentMenuId = null;
 let currentMenu = null;
 let dayTypes = {};
 let checked = {};
+let extras = {};   // extras[cat] = [{n, q, id}]
+let compraView = 'all'; // 'all' | 'list'
 let sheetIdx = null;
 
+// ── Persistence ──
 function loadState() {
   try {
-    const s = JSON.parse(localStorage.getItem('alvnut_v2') || '{}');
+    const s = JSON.parse(localStorage.getItem('alvnut_v3') || '{}');
     if (s.currentMenuId) currentMenuId = s.currentMenuId;
     if (s.dayTypes)      dayTypes      = s.dayTypes;
     if (s.checked)       checked       = s.checked;
+    if (s.extras)        extras        = s.extras;
   } catch(e) {}
 }
-
 function save() {
-  localStorage.setItem('alvnut_v2', JSON.stringify({ currentMenuId, dayTypes, checked }));
+  localStorage.setItem('alvnut_v3', JSON.stringify({ currentMenuId, dayTypes, checked, extras }));
 }
 
-// Devuelve el índice del día actual (0=Lunes … 6=Domingo), o -1 si es fin de semana sin entreno
 function todayIndex() {
-  const d = new Date().getDay(); // 0=Dom, 1=Lun … 6=Sab
-  return d === 0 ? 6 : d - 1;   // convierte a 0=Lun … 6=Dom
+  const d = new Date().getDay();
+  return d === 0 ? 6 : d - 1;
 }
 
+// ── Boot ──
 async function boot() {
   loadState();
   try {
     const res = await fetch('menu-index.json');
     menuIndex = (await res.json()).menus;
   } catch(e) {
-    document.getElementById('v-semana').innerHTML =
-      '<div class="loading">⚠️ No se pudo cargar menu-index.json</div>';
+    document.getElementById('v-semana').innerHTML = '<div class="loading">⚠️ No se pudo cargar menu-index.json</div>';
     return;
   }
   if (!currentMenuId || !menuIndex.find(m => m.id === currentMenuId)) {
@@ -464,14 +411,10 @@ async function loadMenu(id) {
   if (!meta) return;
   currentMenuId = id;
   save();
-
-  // Actualizar botones S1/S2
   document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('on'));
   const activeBtn = document.getElementById('btn-' + id);
   if (activeBtn) activeBtn.classList.add('on');
-
-  document.getElementById('v-semana').innerHTML =
-    '<div class="loading"><div class="spinner"></div> Cargando menú…</div>';
+  document.getElementById('v-semana').innerHTML = '<div class="loading"><div class="spinner"></div> Cargando menú…</div>';
   try {
     const res = await fetch(meta.file);
     currentMenu = await res.json();
@@ -479,11 +422,11 @@ async function loadMenu(id) {
     renderSemana();
     renderCompra();
   } catch(e) {
-    document.getElementById('v-semana').innerHTML =
-      `<div class="loading">⚠️ No se pudo cargar ${meta.file}</div>`;
+    document.getElementById('v-semana').innerHTML = `<div class="loading">⚠️ No se pudo cargar ${meta.file}</div>`;
   }
 }
 
+// ── Semana ──
 function renderSemana() {
   const types = dayTypes[currentMenuId];
   const n = types.filter(t => t !== 'descanso').length;
@@ -505,8 +448,7 @@ function renderSemana() {
 
 function buildCard(i, tipo) {
   const div = document.createElement('div');
-  div.className = 'day-card';
-  div.id = 'card-' + i;
+  div.className = 'day-card'; div.id = 'card-' + i;
   const kcal = TYPE_KCAL[tipo];
   const cd = currentMenu.days[i];
   const des = tipo === 'descanso' ? DESAYUNO.descanso : DESAYUNO.entreno;
@@ -530,8 +472,8 @@ function buildCard(i, tipo) {
     </div>
     <div class="day-body">
       ${mealHtml('Desayuno', des)}
-      ${mealHtml('Comida',   cd?.comida)}
-      ${mealHtml('Cena',     cd?.cena)}
+      ${mealHtml('Comida', cd?.comida)}
+      ${mealHtml('Cena', cd?.cena)}
     </div>`;
   return div;
 }
@@ -540,47 +482,34 @@ function mealHtml(lbl, items) {
   const has = items && items.length;
   return `<div class="meal">
     <div class="meal-label">${lbl}</div>
-    ${has
-      ? items.map(it => `<div class="meal-item ${it === 'Comida libre' ? 'libre' : ''}">${it}</div>`).join('')
-      : '<div class="meal-empty">Sin especificar</div>'
-    }
+    ${has ? items.map(it => `<div class="meal-item ${it==='Comida libre'?'libre':''}">${it}</div>`).join('') : '<div class="meal-empty">Sin especificar</div>'}
   </div>`;
 }
 
 function toggleCard(i) { document.getElementById('card-' + i).classList.toggle('open'); }
 
+// ── Sheet ──
 function openSheet(i) {
   sheetIdx = i;
   const tipo = dayTypes[currentMenuId][i];
   document.getElementById('sheet-dayname').textContent = DAY_NAMES[i];
   document.getElementById('sheet-options').innerHTML =
     ['elements','hyrox','descanso'].map(t => `
-      <div class="sheet-opt ${t} ${t === tipo ? 'selected' : ''}" onclick="selectType('${t}')">
+      <div class="sheet-opt ${t} ${t===tipo?'selected':''}" onclick="selectType('${t}')">
         <div class="s-swatch"></div>
-        <div class="s-text">
-          <div class="s-name">${TYPE_LABEL[t]}</div>
-          <div class="s-kcal">${TYPE_KCAL[t].toLocaleString('es')} kcal</div>
-        </div>
+        <div class="s-text"><div class="s-name">${TYPE_LABEL[t]}</div><div class="s-kcal">${TYPE_KCAL[t].toLocaleString('es')} kcal</div></div>
         <div class="s-check">✓</div>
       </div>`).join('');
   document.getElementById('overlay').classList.add('open');
 }
-
-function closeSheet() {
-  document.getElementById('overlay').classList.remove('open');
-  sheetIdx = null;
-}
-
+function closeSheet() { document.getElementById('overlay').classList.remove('open'); sheetIdx = null; }
 function selectType(tipo) {
   if (sheetIdx === null) return;
   const i = sheetIdx;
-  dayTypes[currentMenuId][i] = tipo;
-  save();
-  closeSheet();
+  dayTypes[currentMenuId][i] = tipo; save(); closeSheet();
   const old = document.getElementById('card-' + i);
   const wasOpen = old && old.classList.contains('open');
-  const neu = buildCard(i, tipo);
-  neu.style.animation = 'none';
+  const neu = buildCard(i, tipo); neu.style.animation = 'none';
   if (wasOpen) neu.classList.add('open');
   old.replaceWith(neu);
   const n = dayTypes[currentMenuId].filter(t => t !== 'descanso').length;
@@ -588,40 +517,110 @@ function selectType(tipo) {
   if (badge) badge.textContent = n + ' entrenos';
 }
 
+// ── Compra ──
+function setCompraView(v) {
+  compraView = v;
+  document.getElementById('vt-all').classList.toggle('on', v === 'all');
+  document.getElementById('vt-list').classList.toggle('on', v === 'list');
+  renderCompra();
+}
+
 function renderCompra() {
   if (!currentMenu) return;
   const meta = menuIndex.find(m => m.id === currentMenuId);
   document.getElementById('compra-badge').textContent = meta.label;
-  const data = currentMenu.compra;
-  document.getElementById('compra-list').innerHTML = Object.entries(data).map(([cat, items]) => `
-    <div class="cat-card">
+
+  // Combinar items del menú con extras
+  // Estructura: { cat: [{n, q, key, isExtra, extraId}] }
+  const allItems = {};
+  ALL_CATS.forEach(cat => { allItems[cat] = []; });
+
+  // Items del menú
+  Object.entries(currentMenu.compra).forEach(([cat, items]) => {
+    items.forEach((it, idx) => {
+      const key = `${currentMenuId}_${cat}_${idx}`;
+      allItems[cat] = allItems[cat] || [];
+      allItems[cat].push({ n: it.n, q: it.q, key, isExtra: false });
+    });
+  });
+
+  // Extras (persistentes, no ligados a semana)
+  Object.entries(extras).forEach(([cat, items]) => {
+    items.forEach(it => {
+      const key = `extra_${it.id}`;
+      allItems[cat] = allItems[cat] || [];
+      allItems[cat].push({ n: it.n, q: it.q, key, isExtra: true, extraId: it.id });
+    });
+  });
+
+  // Filtrar según vista
+  let html = '';
+  ALL_CATS.forEach(cat => {
+    let items = allItems[cat] || [];
+    if (compraView === 'list') {
+      items = items.filter(it => !!checked[it.key]);
+    }
+    if (items.length === 0) return;
+    html += `<div class="cat-card">
       <div class="cat-label">${cat}</div>
-      ${items.map((it, idx) => {
-        const key = `${currentMenuId}_${cat}_${idx}`;
-        const done = !!checked[key];
-        return `<div class="c-item ${done ? 'done' : ''}" onclick="toggleItem('${key}',this)">
+      ${items.map(it => `
+        <div class="c-item ${checked[it.key] ? 'done' : ''}" onclick="toggleItem('${it.key}',this)">
           <div class="c-box"><span class="c-check-icon">✓</span></div>
           <div class="c-name">${it.n}</div>
           <div class="c-qty">${it.q}</div>
-        </div>`;
-      }).join('')}
-    </div>`).join('');
+          ${it.isExtra ? `<button class="c-del" onclick="deleteExtra('${it.extraId}','${cat}',event)">×</button>` : ''}
+        </div>`).join('')}
+    </div>`;
+  });
+
+  if (compraView === 'list' && html === '') {
+    html = '<div class="mi-lista-empty">Marca productos en "Todo" para verlos aquí</div>';
+  }
+
+  document.getElementById('compra-list').innerHTML = html;
 }
 
 function toggleItem(key, el) {
   checked[key] = !checked[key];
   el.classList.toggle('done', checked[key]);
   save();
+  if (compraView === 'list' && !checked[key]) renderCompra();
 }
 
 function resetCompra() {
-  Object.keys(checked).forEach(k => {
-    if (k.startsWith(currentMenuId + '_')) delete checked[k];
-  });
+  Object.keys(checked).forEach(k => { delete checked[k]; });
   save();
   renderCompra();
 }
 
+// ── Extras ──
+function addExtra() {
+  const nameEl = document.getElementById('add-name');
+  const qtyEl  = document.getElementById('add-qty');
+  const catEl  = document.getElementById('add-cat');
+  const n = nameEl.value.trim();
+  const q = qtyEl.value.trim() || '—';
+  const cat = catEl.value;
+  if (!n) { nameEl.focus(); return; }
+  if (!extras[cat]) extras[cat] = [];
+  extras[cat].push({ n, q, id: Date.now() + Math.random() });
+  nameEl.value = ''; qtyEl.value = '';
+  nameEl.focus();
+  save();
+  renderCompra();
+}
+
+function deleteExtra(id, cat, e) {
+  e.stopPropagation();
+  const idNum = parseFloat(id);
+  if (extras[cat]) extras[cat] = extras[cat].filter(it => it.id !== idNum);
+  const key = `extra_${id}`;
+  delete checked[key];
+  save();
+  renderCompra();
+}
+
+// ── Tabs ──
 function showTab(id, btn) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
@@ -633,6 +632,5 @@ function showTab(id, btn) {
 
 boot();
 </script>
-
-
-</body></html>
+</body>
+</html>
