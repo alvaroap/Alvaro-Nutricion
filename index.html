@@ -573,7 +573,7 @@ function renderCompra() {
           <div class="c-box"><span class="c-check-icon">✓</span></div>
           <div class="c-name">${it.n}</div>
           <div class="c-qty">${it.q !== '—' ? it.q : ''}</div>
-          ${it.isExtra ? `<button class="c-del" onclick="deleteExtra('${it.extraId}','${cat}',event)">×</button>` : ''}
+
         </div>`;
       }).join('')}
     </div>`;
@@ -600,6 +600,7 @@ function toggleItem(key, el, view) {
 function resetCompra() {
   Object.keys(checked).forEach(k => { delete checked[k]; });
   Object.keys(listChecked).forEach(k => { delete listChecked[k]; });
+  extras = {};
   save();
   renderCompra();
 }
