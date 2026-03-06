@@ -202,6 +202,41 @@
   /* ── Mi lista (vista filtrada) ── */
   .mi-lista-empty { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; }
 
+  /* Mi lista — negro salmon */
+  .mi-lista-mode .add-item-form {
+    background: #080A0F;
+    border: 1.5px solid rgba(242,157,162,.35);
+  }
+  .mi-lista-mode .add-item-form .form-title { color: #F29DA2; }
+  .mi-lista-mode .add-item-form .add-input {
+    background: #0D0F14;
+    border-color: rgba(242,157,162,.2);
+  }
+  .mi-lista-mode .add-item-form .add-select {
+    background: #0D0F14;
+    border-color: rgba(242,157,162,.2);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23F29DA2' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
+  .mi-lista-mode .add-item-form .add-btn {
+    background: #F29DA2;
+    color: #1a1d2e;
+  }
+  .mi-lista-mode .cat-card {
+    background: #080A0F;
+    border: 1.5px solid rgba(242,157,162,.2);
+  }
+  .mi-lista-mode .cat-label {
+    background: #0D0F14;
+    color: #F29DA2;
+    border-bottom-color: rgba(242,157,162,.12);
+  }
+  .mi-lista-mode .c-item {
+    border-bottom-color: rgba(242,157,162,.08);
+  }
+  .mi-lista-mode .c-box {
+    border-color: rgba(242,157,162,.3);
+  }
+
   /* ── Loading ── */
   .loading { display: flex; align-items: center; justify-content: center; padding: 60px 20px; color: var(--muted); font-size: 14px; gap: 10px; }
   .spinner { width: 18px; height: 18px; border: 2px solid var(--surface3); border-top-color: var(--lavender); border-radius: 50%; animation: spin .6s linear infinite; }
@@ -531,6 +566,9 @@ function renderCompra() {
   if (!currentMenu) return;
   const meta = menuIndex.find(m => m.id === currentMenuId);
   document.getElementById('compra-badge').textContent = meta.label;
+  // Apply mi-lista-mode styling
+  const compraEl = document.getElementById('v-compra');
+  compraEl.classList.toggle('mi-lista-mode', compraView === 'list');
 
   // Combinar items del menú con extras
   // Estructura: { cat: [{n, q, key, isExtra, extraId}] }
