@@ -1,157 +1,91 @@
 {
-  "semana": 1,
-  "dias": [
+  "id": "semana-1",
+  "label": "Semana 1",
+  "types": ["elements","elements","hyrox","descanso","hyrox","descanso","descanso"],
+  "days": [
     {
-      "dia": "Lunes",
-      "tipo": "Elements",
-      "desayuno": [
-        {"ingrediente": "Pan Wasa", "cantidad": 2, "unidad": "unidades"},
-        {"ingrediente": "Aguacate", "cantidad": 40, "unidad": "g"},
-        {"ingrediente": "Pavo", "cantidad": 60, "unidad": "g"}
-      ],
-      "comida": [
-        {"ingrediente": "Pechuga de Pollo", "cantidad": 200, "unidad": "g"},
-        {"ingrediente": "Arroz", "cantidad": 60, "unidad": "g"},
-        {"ingrediente": "Pimientos y Cebolla", "cantidad": 250, "unidad": "g"}
-      ],
-      "merienda": [
-        {"ingrediente": "Yogur natural", "cantidad": 1, "unidad": "unidad"},
-        {"ingrediente": "Frutos secos", "cantidad": 15, "unidad": "g"}
-      ],
-      "cena": [
-        {"ingrediente": "Pescado Blanco (Bacalao/Merluza)", "cantidad": 250, "unidad": "g"},
-        {"ingrediente": "Crema de Calabacín", "cantidad": 300, "unidad": "ml"}
-      ]
+      "comida": ["Canónigos","100 g cherrys","100 g cebolla morada","150 g mango","40 g aguacate","200 g pollo"],
+      "cena": ["Verduras asadas (pimiento rojo, calabacín, brócoli) 250 g","250 g pescado blanco"]
     },
     {
-      "dia": "Martes",
-      "tipo": "Elements",
-      "desayuno": [
-        {"ingrediente": "Avena", "cantidad": 40, "unidad": "g"},
-        {"ingrediente": "Huevo", "cantidad": 1, "unidad": "unidad"},
-        {"ingrediente": "Mango", "cantidad": 100, "unidad": "g"}
-      ],
-      "comida": [
-        {"ingrediente": "Ternera", "cantidad": 200, "unidad": "g"},
-        {"ingrediente": "Pasta integral", "cantidad": 60, "unidad": "g"},
-        {"ingrediente": "Champiñones", "cantidad": 250, "unidad": "g"},
-        {"ingrediente": "Mango (Postre)", "cantidad": 150, "unidad": "g"}
-      ],
-      "merienda": [
-        {"ingrediente": "Fruta (Manzana/Pera)", "cantidad": 1, "unidad": "unidad"}
-      ],
-      "cena": [
-        {"ingrediente": "Huevo (Tortilla)", "cantidad": 2, "unidad": "unidades"},
-        {"ingrediente": "Ensalada verde", "cantidad": 250, "unidad": "g"}
-      ]
+      "comida": ["Verduras asadas (pimiento rojo, calabacín, brócoli) 250 g","200 g garbanzos cocidos","50 g Cottage","15 g frutos secos","1 huevo"],
+      "cena": ["250 g champiñones","250 g gambas","1 huevo"]
     },
     {
-      "dia": "Miércoles",
-      "tipo": "Hyrox",
-      "desayuno": [
-        {"ingrediente": "Pan Wasa", "cantidad": 2, "unidad": "unidades"},
-        {"ingrediente": "Aguacate", "cantidad": 40, "unidad": "g"},
-        {"ingrediente": "Huevo a la plancha", "cantidad": 1, "unidad": "unidad"}
-      ],
-      "comida": [
-        {"ingrediente": "Salmón", "cantidad": 180, "unidad": "g"},
-        {"ingrediente": "Patata", "cantidad": 200, "unidad": "g"},
-        {"ingrediente": "Canónigos con Mango", "cantidad": 150, "unidad": "g"}
-      ],
-      "merienda": [
-        {"ingrediente": "Proteína Whey", "cantidad": 30, "unidad": "g"},
-        {"ingrediente": "Frutos secos", "cantidad": 15, "unidad": "g"}
-      ],
-      "cena": [
-        {"ingrediente": "Pechuga de Pavo", "cantidad": 200, "unidad": "g"},
-        {"ingrediente": "Puré de Verduras", "cantidad": 300, "unidad": "ml"}
-      ]
+      "comida": ["60 g arroz","Canónigos","100 g cherrys","150 g mango","150 g salmón con 1 cda soja y 1 cdita sésamo","50 g Cottage"],
+      "cena": ["Verduras asadas (pimiento rojo, calabacín, brócoli) 250 g","250 g pollo"]
     },
     {
-      "dia": "Jueves",
-      "tipo": "Descanso",
-      "desayuno": [
-        {"ingrediente": "Queso fresco batido", "cantidad": 200, "unidad": "g"},
-        {"ingrediente": "Mango", "cantidad": 150, "unidad": "g"}
-      ],
-      "comida": [
-        {"ingrediente": "Garbanzos (cocidos)", "cantidad": 200, "unidad": "g"},
-        {"ingrediente": "Atún natural", "cantidad": 60, "unidad": "g"},
-        {"ingrediente": "Mango", "cantidad": 150, "unidad": "g"}
-      ],
-      "merienda": [
-        {"ingrediente": "Yogur natural", "cantidad": 1, "unidad": "unidad"},
-        {"ingrediente": "Frutos secos", "cantidad": 15, "unidad": "g"}
-      ],
-      "cena": [
-        {"ingrediente": "Pescado Semigraso (Dorada/Lubina)", "cantidad": 250, "unidad": "g"},
-        {"ingrediente": "Espárragos", "cantidad": 250, "unidad": "g"}
-      ]
+      "comida": ["250 g pollo","300 g pisto"],
+      "cena": ["Tortilla campesina: 2 huevos + 80 g maíz + 100 g cebolla + 30 g mozzarella","Caldo o consomé"]
     },
     {
-      "dia": "Viernes",
-      "tipo": "Hyrox",
-      "desayuno": [
-        {"ingrediente": "Pan Wasa", "cantidad": 2, "unidad": "unidades"},
-        {"ingrediente": "Aguacate", "cantidad": 40, "unidad": "g"},
-        {"ingrediente": "Pavo", "cantidad": 60, "unidad": "g"}
-      ],
-      "comida": [
-        {"ingrediente": "Lomo de cerdo", "cantidad": 200, "unidad": "g"},
-        {"ingrediente": "Patata", "cantidad": 200, "unidad": "g"},
-        {"ingrediente": "Berenjena asada", "cantidad": 250, "unidad": "g"}
-      ],
-      "merienda": [
-        {"ingrediente": "Fruta (Pera)", "cantidad": 1, "unidad": "unidad"}
-      ],
-      "cena": [
-        {"ingrediente": "Gambas/Langostinos", "cantidad": 250, "unidad": "g"},
-        {"ingrediente": "Crema de Espinacas", "cantidad": 300, "unidad": "ml"}
-      ]
+      "comida": ["250 g pescado blanco","300 g pisto"],
+      "cena": ["Huevos rotos: patata panadera 200 g + 100 g cebolla en juliana + 2 huevos plancha + 30 g jamón serrano"]
     },
     {
-      "dia": "Sábado",
-      "tipo": "Descanso",
-      "desayuno": [
-        {"ingrediente": "Tortitas de avena", "cantidad": 40, "unidad": "g"},
-        {"ingrediente": "Huevo", "cantidad": 1, "unidad": "unidad"}
-      ],
-      "comida": [
-        {"ingrediente": "Pollo", "cantidad": 200, "unidad": "g"},
-        {"ingrediente": "Mix de Verduras Wok", "cantidad": 300, "unidad": "g"}
-      ],
-      "merienda": [
-        {"ingrediente": "Yogur natural", "cantidad": 1, "unidad": "unidad"},
-        {"ingrediente": "Frutos secos", "cantidad": 15, "unidad": "g"}
-      ],
-      "cena": [
-        {"ingrediente": "Puré de Zanahoria", "cantidad": 300, "unidad": "ml"},
-        {"ingrediente": "Jamón Serrano", "cantidad": 60, "unidad": "g"}
-      ]
+      "comida": ["Comida libre"],
+      "cena": ["Lacón con pimentón 150 g","Caldo o consomé"]
     },
     {
-      "dia": "Domingo",
-      "tipo": "Descanso",
-      "desayuno": [
-        {"ingrediente": "Pan Wasa", "cantidad": 2, "unidad": "unidades"},
-        {"ingrediente": "Aguacate", "cantidad": 40, "unidad": "g"},
-        {"ingrediente": "Pavo", "cantidad": 60, "unidad": "g"}
-      ],
-      "comida": [
-        {"ingrediente": "COMIDA LIBRE", "cantidad": 1, "unidad": "unidad"}
-      ],
-      "merienda": [
-        {"ingrediente": "Café o Infusión", "cantidad": 1, "unidad": "unidad"}
-      ],
-      "cena": [
-        {"ingrediente": "Pescado Blanco", "cantidad": 250, "unidad": "g"},
-        {"ingrediente": "Judías verdes", "cantidad": 250, "unidad": "g"}
-      ]
+      "comida": ["250 g pollo con pimentón y ajo","250 g alcachofas","30 g jamón"],
+      "cena": ["Berenjena rellena: 1 berenjena + 50 g tomate frito natural + 1 huevo cocido + 1 lata atún + 30 g mozzarella gratinada o parmesano"]
     }
   ],
   "compra": {
-    "Proteínas": ["Pollo", "Ternera", "Pavo", "Lomo", "Salmón", "Pescado Blanco", "Sepia", "Atún", "Gambas", "Huevos", "Jamón"],
-    "Verduras y Frutas": ["Mango", "Aguacate", "Pimientos", "Cebolla", "Champiñones", "Calabacín", "Canónigos", "Espinacas", "Zanahoria", "Berenjena", "Espárragos", "Judías verdes"],
-    "Despensa": ["Pan Wasa", "Arroz", "Pasta integral", "Patata", "Garbanzos", "Avena", "Yogures", "Frutos secos"]
+    "Proteínas": [
+      {"n":"Pavo cocido","q":"700 g"},
+      {"n":"Pollo","q":"~700 g"},
+      {"n":"Pescado blanco","q":"500 g"},
+      {"n":"Salmón","q":"150 g"},
+      {"n":"Gambas","q":"250 g"},
+      {"n":"Lacón","q":"150 g"},
+      {"n":"Jamón serrano","q":"30 g"},
+      {"n":"Atún natural (lata)","q":"1 lata"}
+    ],
+    "Huevos y lácteos": [
+      {"n":"Huevos","q":"10 u"},
+      {"n":"Yogur griego","q":"100 g"},
+      {"n":"Cottage cheese","q":"50 g"},
+      {"n":"Mozzarella o parmesano","q":"60 g"}
+    ],
+    "Verduras": [
+      {"n":"Canónigos","q":"2 bolsas"},
+      {"n":"Tomates cherry","q":"200 g"},
+      {"n":"Cebolla morada","q":"1 ud"},
+      {"n":"Cebolla","q":"1 ud"},
+      {"n":"Pimiento rojo","q":"3 uds"},
+      {"n":"Calabacín","q":"3 uds"},
+      {"n":"Brócoli","q":"750 g"},
+      {"n":"Champiñones","q":"250 g"},
+      {"n":"Alcachofas","q":"250 g"},
+      {"n":"Berenjena","q":"1 ud"},
+      {"n":"Pisto","q":"600 g"},
+      {"n":"Patata","q":"200 g"}
+    ],
+    "Frutas": [
+      {"n":"Plátano de Canarias","q":"7 uds"},
+      {"n":"Mango","q":"300 g"},
+      {"n":"Naranjas (zumo)","q":"~10 uds"},
+      {"n":"Fruta a elección","q":"3 uds"}
+    ],
+    "Carbohidratos": [
+      {"n":"Wasa Sesam","q":"~20 uds"},
+      {"n":"Tortitas de maíz","q":"6 uds"},
+      {"n":"Arroz","q":"60 g"},
+      {"n":"Maíz cocido","q":"80 g"}
+    ],
+    "Grasas y extras": [
+      {"n":"Aguacate","q":"~5 uds"},
+      {"n":"Frutos secos","q":"15 g"},
+      {"n":"Tomate frito natural","q":"50 g"},
+      {"n":"Salsa de soja","q":"pequeño"},
+      {"n":"Sésamo","q":"pequeño"},
+      {"n":"Pimentón","q":"pequeño"},
+      {"n":"AOVE","q":"uso semanal"}
+    ],
+    "Legumbres": [
+      {"n":"Garbanzos cocidos","q":"200 g"}
+    ]
   }
 }
