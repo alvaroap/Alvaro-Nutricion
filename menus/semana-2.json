@@ -1,91 +1,199 @@
 {
   "id": "semana-2",
   "label": "Semana 2",
-  "types": ["elements","elements","hyrox","descanso","hyrox","descanso","descanso"],
+  "types": [
+    "elements",
+    "elements",
+    "hyrox",
+    "descanso",
+    "hyrox",
+    "descanso",
+    "descanso"
+  ],
   "days": [
     {
-      "comida": ["Acelgas rehogadas 300 g","Lomo de cerdo o solomillo 200 g","1 fruta"],
-      "cena": ["Pescado semigraso 250 g con rodajas de limón y 100 g cebolla","Caldo o consomé 300 ml"]
+      "comida": [
+        "200 g pavo","60 g noodles de arroz","200 g Brócoli"
+      ],
+      "cena": [
+        "180 g pescado azul","300 ml Puré de Verduras"
+      ]
     },
     {
-      "comida": ["Bolsa rúcula","200 g lentejas","1 bola mozzarella light","100 g pollo","15 g frutos secos"],
-      "cena": ["300 ml puré","Tortilla: 2 huevos + 30 g mozzarella + 30 g jamón cocido extra"]
+      "comida": [
+        "200 g hamburguesa de ternera","200 g patata","150 g mango"
+      ],
+      "cena": [
+        "Revuelto: 250 g setas","200 g gambas","2 huevos"
+      ]
     },
     {
-      "comida": ["100 g noodles de arroz","200 g pimiento y cebolla","200 g pollo","50 g tomate frito natural"],
-      "cena": ["250 g pescado blanco","Brócoli al vapor 250 g"]
+      "comida": [
+        "Bolsa rúcula","200 g lentejas cocidas","100 g pollo","Verduras"
+      ],
+      "cena": [
+        "250 g pescado blanco","300 ml Puré de Calabaza"
+      ]
     },
     {
-      "comida": ["Acelgas rehogadas 300 g","60 g jamón serrano","2 huevos cocidos"],
-      "cena": ["Salmón o pescado azul 180 g","250 g setas"]
+      "comida": [
+        "Ensalada: queso fresco","Jamón cocido","150 g mango"
+      ],
+      "cena": [
+        "200 g solomillo de cerdo","300 ml Puré de Champiñones"
+      ]
     },
     {
-      "comida": ["Wok: 200 g pollo + 300 g brócoli y calabacín + 1 cda soja + 1 cdita sésamo + 15 g frutos secos"],
-      "cena": ["Patata cocida machacada con 100 g cebolleta y 30 g mozzarella o parmesano","Pulpo o sepia 200 g"]
+      "comida": [
+        "250 g bacalao","200 g patata","150 g mango"
+      ],
+      "cena": [
+        "Tortilla: 2 huevos + 30 g mozzarella + 30 g jamón"
+      ]
     },
     {
-      "comida": ["Comida libre"],
-      "cena": ["250 g tomate","100 g cebolla","120 g queso fresco","1 lata atún natural"]
+      "comida": [
+        "200 g pollo al horno","300 ml Puré de Verduras"
+      ],
+      "cena": [
+        "Caldo de pescado","250 g sepia a la plancha"
+      ]
     },
     {
-      "comida": ["Bastones de calabaza 200 g con mozzarella o parmesano","100 g brócoli","200 g carne roja"],
-      "cena": ["300 ml puré","Tortilla: 2 huevos + 30 g mozzarella + 30 g jamón cocido extra"]
+      "comida": [
+        "Comida libre"
+      ],
+      "cena": [
+        "250 g pescado semigraso","300 ml Puré de Calabaza"
+      ]
     }
   ],
   "compra": {
     "Proteínas": [
-      {"n":"Pavo cocido","q":"700 g"},
-      {"n":"Pollo","q":"~500 g"},
-      {"n":"Lomo de cerdo o solomillo","q":"200 g"},
-      {"n":"Pescado blanco","q":"250 g"},
-      {"n":"Pescado semigraso (dorada/lubina)","q":"250 g"},
-      {"n":"Salmón o pescado azul","q":"180 g"},
-      {"n":"Pulpo o sepia","q":"200 g"},
-      {"n":"Carne roja","q":"200 g"},
-      {"n":"Jamón serrano","q":"60 g"},
-      {"n":"Jamón cocido extra","q":"60 g"},
-      {"n":"Atún natural (lata)","q":"1 lata"}
+      {
+        "n": "Pavo",
+        "q": "200 g"
+      },
+      {
+        "n": "Pollo",
+        "q": "300 g"
+      },
+      {
+        "n": "Hamburguesa de ternera",
+        "q": "200 g"
+      },
+      {
+        "n": "Solomillo de cerdo",
+        "q": "200 g"
+      },
+      {
+        "n": "Bacalao",
+        "q": "250 g"
+      },
+      {
+        "n": "Pescado blanco",
+        "q": "250 g"
+      },
+      {
+        "n": "Pescado azul",
+        "q": "180 g"
+      },
+      {
+        "n": "Pescado semigraso",
+        "q": "250 g"
+      },
+      {
+        "n": "Gambas",
+        "q": "200 g"
+      },
+      {
+        "n": "Sepia",
+        "q": "250 g"
+      },
+      {
+        "n": "Jamón cocido",
+        "q": "100 g"
+      },
+      {
+        "n": "Jamón serrano",
+        "q": "30 g"
+      }
     ],
     "Huevos y lácteos": [
-      {"n":"Huevos","q":"8 u"},
-      {"n":"Yogur griego","q":"100 g"},
-      {"n":"Mozzarella light (bola)","q":"1 ud"},
-      {"n":"Mozzarella o parmesano","q":"90 g"},
-      {"n":"Queso fresco","q":"120 g"}
+      {
+        "n": "Huevos",
+        "q": "6 u"
+      },
+      {
+        "n": "Queso fresco",
+        "q": "100 g"
+      },
+      {
+        "n": "Mozzarella",
+        "q": "30 g"
+      }
     ],
     "Verduras": [
-      {"n":"Rúcula","q":"1 bolsa"},
-      {"n":"Acelgas","q":"600 g"},
-      {"n":"Brócoli","q":"400 g"},
-      {"n":"Calabacín","q":"2 uds"},
-      {"n":"Cebolla","q":"2 uds"},
-      {"n":"Cebolleta","q":"100 g"},
-      {"n":"Pimiento","q":"200 g"},
-      {"n":"Setas","q":"250 g"},
-      {"n":"Tomate","q":"250 g"},
-      {"n":"Calabaza","q":"200 g"}
+      {
+        "n": "Brócoli",
+        "q": "~500 g"
+      },
+      {
+        "n": "Verduras para crema",
+        "q": "300 g"
+      },
+      {
+        "n": "Verduras para puré",
+        "q": "300 g"
+      },
+      {
+        "n": "Setas",
+        "q": "250 g"
+      },
+      {
+        "n": "Calabaza",
+        "q": "300 g"
+      },
+      {
+        "n": "Champiñones",
+        "q": "250 g"
+      },
+      {
+        "n": "Lechuga (ensalada)",
+        "q": "1 bolsa"
+      }
     ],
     "Frutas": [
-      {"n":"Plátano de Canarias","q":"7 uds"},
-      {"n":"Naranjas (zumo)","q":"~10 uds"},
-      {"n":"Fruta a elección","q":"4 uds"}
+      {
+        "n": "Mango",
+        "q": "~450 g"
+      }
     ],
     "Carbohidratos": [
-      {"n":"Wasa Sesam","q":"~20 uds"},
-      {"n":"Tortitas de maíz","q":"6 uds"},
-      {"n":"Noodles de arroz","q":"100 g"},
-      {"n":"Patata","q":"1 ud mediana"}
-    ],
-    "Grasas y extras": [
-      {"n":"Aguacate","q":"~5 uds"},
-      {"n":"Frutos secos","q":"15 g"},
-      {"n":"Tomate frito natural","q":"50 g"},
-      {"n":"Salsa de soja","q":"pequeño"},
-      {"n":"Sésamo","q":"pequeño"},
-      {"n":"AOVE","q":"uso semanal"}
+      {
+        "n": "Noodles de arroz",
+        "q": "60 g"
+      },
+      {
+        "n": "Patata",
+        "q": "400 g"
+      }
     ],
     "Legumbres": [
-      {"n":"Lentejas cocidas","q":"200 g"}
+      {
+        "n": "Lentejas cocidas",
+        "q": "200 g"
+      }
+    ],
+    "Grasas y extras": [
+      {
+        "n": "Caldo de pescado",
+        "q": "1 brick"
+      },
+      {
+        "n": "AOVE",
+        "q": "uso semanal"
+      }
     ]
   }
 }
