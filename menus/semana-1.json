@@ -1,91 +1,189 @@
 {
   "id": "semana-1",
   "label": "Semana 1",
-  "types": ["elements","elements","hyrox","descanso","hyrox","descanso","descanso"],
+  "types": [
+    "elements","elements", "hyrox","descanso","hyrox","descanso","descanso"
+  ],
   "days": [
     {
-      "comida": ["Canónigos","100 g cherrys","100 g cebolla morada","150 g mango","40 g aguacate","200 g pollo"],
-      "cena": ["Verduras asadas (pimiento rojo, calabacín, brócoli) 250 g","250 g pescado blanco"]
+      "comida": [
+        "200 g pollo","60 g arroz","Pimientos","Cebolla"
+      ],
+      "cena": [
+        "250 g pescado blanco","300 ml Puré de Calabacín"
+      ]
     },
     {
-      "comida": ["Verduras asadas (pimiento rojo, calabacín, brócoli) 250 g","200 g garbanzos cocidos","50 g Cottage","15 g frutos secos","1 huevo"],
-      "cena": ["250 g champiñones","250 g gambas","1 huevo"]
+      "comida": [
+        "200 g ternera","60 g pasta","250 g Champiñones","150 g mango"
+      ],
+      "cena": [
+        "Tortilla: 2 huevos", "Ensalada verde"
+      ]
     },
     {
-      "comida": ["60 g arroz","Canónigos","100 g cherrys","150 g mango","150 g salmón con 1 cda soja y 1 cdita sésamo","50 g Cottage"],
-      "cena": ["Verduras asadas (pimiento rojo, calabacín, brócoli) 250 g","250 g pollo"]
+      "comida": [
+        "Ensalada: 180 g salmón","200 g patata","150 g mango"
+      ],
+      "cena": [
+        "200 g pavo","300 ml Puré de Verduras"
+      ]
     },
     {
-      "comida": ["250 g pollo","300 g pisto"],
-      "cena": ["Tortilla campesina: 2 huevos + 80 g maíz + 100 g cebolla + 30 g mozzarella","Caldo o consomé"]
+      "comida": [
+        "200 g garbanzos cocidos", "1 lata atún","150 g mango"
+      ],
+      "cena": [
+        "250 g pescado semigraso","Espárragos"
+      ]
     },
     {
-      "comida": ["250 g pescado blanco","300 g pisto"],
-      "cena": ["Huevos rotos: patata panadera 200 g + 100 g cebolla en juliana + 2 huevos plancha + 30 g jamón serrano"]
+      "comida": [
+        "200 g lomo de cerdo","200 g patata","Berenjena"
+      ],
+      "cena": [
+        "250 g gambas","300 ml Puré de Calabaza"
+      ]
     },
     {
-      "comida": ["Comida libre"],
-      "cena": ["Lacón con pimentón 150 g","Caldo o consomé"]
+      "comida": [
+        "Wok: 200 g pollo","Mix de verduras"
+      ],
+      "cena": [
+        "300ml Puré de Zanahoria","60 g jamón serrano"
+      ]
     },
     {
-      "comida": ["250 g pollo con pimentón y ajo","250 g alcachofas","30 g jamón"],
-      "cena": ["Berenjena rellena: 1 berenjena + 50 g tomate frito natural + 1 huevo cocido + 1 lata atún + 30 g mozzarella gratinada o parmesano"]
+      "comida": [
+        "Comida libre"
+      ],
+      "cena": [
+        "250 g pescado blanco","Judías verdes"
+      ]
     }
   ],
   "compra": {
     "Proteínas": [
-      {"n":"Pavo cocido","q":"700 g"},
-      {"n":"Pollo","q":"~700 g"},
-      {"n":"Pescado blanco","q":"500 g"},
-      {"n":"Salmón","q":"150 g"},
-      {"n":"Gambas","q":"250 g"},
-      {"n":"Lacón","q":"150 g"},
-      {"n":"Jamón serrano","q":"30 g"},
-      {"n":"Atún natural (lata)","q":"1 lata"}
+      {
+        "n": "Pollo",
+        "q": "~400 g"
+      },
+      {
+        "n": "Ternera",
+        "q": "200 g"
+      },
+      {
+        "n": "Pavo",
+        "q": "200 g"
+      },
+      {
+        "n": "Lomo de cerdo",
+        "q": "200 g"
+      },
+      {
+        "n": "Pescado blanco",
+        "q": "500 g"
+      },
+      {
+        "n": "Pescado semigraso",
+        "q": "250 g"
+      },
+      {
+        "n": "Salmón",
+        "q": "180 g"
+      },
+      {
+        "n": "Gambas",
+        "q": "250 g"
+      },
+      {
+        "n": "Atún natural (lata)",
+        "q": "1 lata"
+      },
+      {
+        "n": "Jamón serrano",
+        "q": "60 g"
+      }
     ],
     "Huevos y lácteos": [
-      {"n":"Huevos","q":"10 u"},
-      {"n":"Yogur griego","q":"100 g"},
-      {"n":"Cottage cheese","q":"50 g"},
-      {"n":"Mozzarella o parmesano","q":"60 g"}
+      {
+        "n": "Huevos",
+        "q": "2 u"
+      }
     ],
     "Verduras": [
-      {"n":"Canónigos","q":"2 bolsas"},
-      {"n":"Tomates cherry","q":"200 g"},
-      {"n":"Cebolla morada","q":"1 ud"},
-      {"n":"Cebolla","q":"1 ud"},
-      {"n":"Pimiento rojo","q":"3 uds"},
-      {"n":"Calabacín","q":"3 uds"},
-      {"n":"Brócoli","q":"750 g"},
-      {"n":"Champiñones","q":"250 g"},
-      {"n":"Alcachofas","q":"250 g"},
-      {"n":"Berenjena","q":"1 ud"},
-      {"n":"Pisto","q":"600 g"},
-      {"n":"Patata","q":"200 g"}
+      {
+        "n": "Pimientos",
+        "q": "2 uds"
+      },
+      {
+        "n": "Cebolla",
+        "q": "1 ud"
+      },
+      {
+        "n": "Calabacín",
+        "q": "2 uds"
+      },
+      {
+        "n": "Champiñones",
+        "q": "250 g"
+      },
+      {
+        "n": "Espárragos",
+        "q": "250 g"
+      },
+      {
+        "n": "Berenjena",
+        "q": "1 ud"
+      },
+      {
+        "n": "Espinacas",
+        "q": "200 g"
+      },
+      {
+        "n": "Mix de verduras (wok)",
+        "q": "300 g"
+      },
+      {
+        "n": "Zanahoria",
+        "q": "3 uds"
+      },
+      {
+        "n": "Judías verdes",
+        "q": "250 g"
+      }
     ],
     "Frutas": [
-      {"n":"Plátano de Canarias","q":"7 uds"},
-      {"n":"Mango","q":"300 g"},
-      {"n":"Naranjas (zumo)","q":"~10 uds"},
-      {"n":"Fruta a elección","q":"3 uds"}
+      {
+        "n": "Mango",
+        "q": "~450 g"
+      }
     ],
     "Carbohidratos": [
-      {"n":"Wasa Sesam","q":"~20 uds"},
-      {"n":"Tortitas de maíz","q":"6 uds"},
-      {"n":"Arroz","q":"60 g"},
-      {"n":"Maíz cocido","q":"80 g"}
-    ],
-    "Grasas y extras": [
-      {"n":"Aguacate","q":"~5 uds"},
-      {"n":"Frutos secos","q":"15 g"},
-      {"n":"Tomate frito natural","q":"50 g"},
-      {"n":"Salsa de soja","q":"pequeño"},
-      {"n":"Sésamo","q":"pequeño"},
-      {"n":"Pimentón","q":"pequeño"},
-      {"n":"AOVE","q":"uso semanal"}
+      {
+        "n": "Arroz",
+        "q": "60 g"
+      },
+      {
+        "n": "Pasta",
+        "q": "60 g"
+      },
+      {
+        "n": "Patata",
+        "q": "400 g"
+      }
     ],
     "Legumbres": [
-      {"n":"Garbanzos cocidos","q":"200 g"}
+      {
+        "n": "Garbanzos cocidos",
+        "q": "200 g"
+      }
+    ],
+    "Grasas y extras": [
+      {
+        "n": "AOVE",
+        "q": "uso semanal"
+      }
     ]
   }
 }
