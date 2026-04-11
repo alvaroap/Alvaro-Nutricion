@@ -33,7 +33,7 @@
     }
   ],
   "compra": {
-    "Carnes y Pescados": [
+    "Proteínas": [
       {"n": "Ternera", "q": "200 g"},
       {"n": "Pechuga de pollo", "q": "300 g"},
       {"n": "Pechuga de pavo", "q": "200 g"},
@@ -45,7 +45,7 @@
       {"n": "Sepia", "q": "250 g"},
       {"n": "Atún natural (lata)", "q": "1 ud"}
     ],
-    "Verduras y Frutas": [
+    "Verduras": [
       {"n": "Canónigos/Rúcula", "q": "2 bolsas"},
       {"n": "Tomates cherry", "q": "200 g"},
       {"n": "Champiñones", "q": "250 g"},
@@ -53,17 +53,19 @@
       {"n": "Espárragos trigueños", "q": "1 manojo"},
       {"n": "Judías verdes", "q": "250 g"},
       {"n": "Pisto", "q": "150 g"},
+      {"n": "Verduras para crema", "q": "1.2 kg"}
+    ],
+    "Frutas": [
       {"n": "Mango", "q": "300 g"},
       {"n": "Aguacate", "q": "2 uds"}
     ],
-    "Despensa y Lácteos": [
+    "Carbohidratos y Despensa": [
       {"n": "Arroz", "q": "60 g"},
       {"n": "Pasta integral", "q": "60 g"},
       {"n": "Patata", "q": "200 g"},
       {"n": "Lentejas cocidas", "q": "200 g"},
       {"n": "Queso fresco", "q": "120 g"},
-      {"n": "Huevos", "q": "4 uds"},
-      {"n": "Cremas/Purés variados", "q": "1.2 L"}
+      {"n": "Huevos", "q": "4 uds"}
     ]
   }
 }
