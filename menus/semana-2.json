@@ -33,7 +33,7 @@
     }
   ],
   "compra": {
-    "Carnes y Pescados": [
+    "Proteínas": [
       {"n": "Pavo", "q": "200 g"},
       {"n": "Hamburguesa ternera", "q": "200 g"},
       {"n": "Pollo", "q": "200 g"},
@@ -47,21 +47,23 @@
       {"n": "Atún natural (lata)", "q": "1 ud"},
       {"n": "Jamón cocido/Lacón", "q": "100 g"}
     ],
-    "Verduras y Frutas": [
+    "Verduras": [
       {"n": "Canónigos/Lechuga", "q": "2 bolsas"},
-      {"n": "Tomates cherry/natural", "q": "300 g"},
+      {"n": "Tomates cherry", "q": "200 g"},
       {"n": "Brócoli", "q": "250 g"},
       {"n": "Verduras salteadas", "q": "250 g"},
+      {"n": "Verduras para crema", "q": "1.2 kg"}
+    ],
+    "Frutas": [
       {"n": "Mango", "q": "150 g"},
       {"n": "Aguacate", "q": "2 uds"}
     ],
-    "Despensa y Lácteos": [
+    "Carbohidratos y Despensa": [
       {"n": "Noodles de arroz", "q": "60 g"},
       {"n": "Pasta integral", "q": "60 g"},
       {"n": "Patata", "q": "200 g"},
       {"n": "Garbanzos cocidos", "q": "200 g"},
-      {"n": "Huevos", "q": "4 uds"},
-      {"n": "Cremas/Purés variados", "q": "1.2 L"}
+      {"n": "Huevos", "q": "4 uds"}
     ]
   }
 }
