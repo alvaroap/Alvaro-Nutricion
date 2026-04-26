@@ -1,69 +1,68 @@
 {
-  "id": "semana-2",
-  "label": "Semana 2",
-  "types": ["elements", "elements", "hyrox", "descanso", "hyrox", "descanso", "descanso"],
-  "days": [
-    {
-      "comida": ["200 g pavo", "60 g noodles de arroz"],
-      "cena": ["180 g atún (P. Azul)", "250 g brócoli al vapor"]
-    },
-    {
-      "comida": ["200 g hamburguesa ternera", "60 g pasta integral"],
-      "cena": ["200 g revuelto de gambas", "300 ml crema de calabaza"]
-    },
-    {
-      "comida": ["250 g bacalao (P. Blanco)", "200 g patata", "80 g tomate natural tamizado"],
-      "cena": ["200 g pollo", "Ensalada (60 g canónigos, 40 g cherrys)"]
-    },
-    {
-      "comida": ["Ensalada (60 g canónigos, 100 g jamón cocido o lacón, 40 g aguacate)"],
-      "cena": ["250 g lubina (P. Semigraso)", "300 ml crema de espinacas"]
-    },
-    {
-      "comida": ["200 g garbanzos cocidos", "1 lata atún natural", "150 g mango"],
-      "cena": ["2 huevos (tortilla)", "300 ml puré de calabacín"]
-    },
-    {
-      "comida": ["200 g lomo de cerdo", "Ensalada (60 g lechuga, 40 g aguacate)"],
-      "cena": ["300 ml crema de champiñones", "200 g sepia"]
-    },
-    {
-      "comida": ["COMIDA LIBRE"],
-      "cena": ["250 g lenguado (P. Blanco)", "250 g salteado de verduras"]
+    "id": "semana-2",
+    "label": "Semana 2",
+    "types": ["elements", "elements", "hyrox", "descanso", "hyrox", "descanso", "descanso"],
+    "days": [
+      {
+        "comida": ["200 g pavo", "60 g noodles de arroz", "150 g brócoli"],
+        "cena": ["180 g atún (P. Azul)", "300 ml crema de verduras"]
+      },
+      {
+        "comida": ["200 g hamburguesa ternera", "60 g pasta integral", "100 g tomate natural"],
+        "cena": ["200 g gambas", "200 g setas salteadas"]
+      },
+      {
+        "comida": ["250 g bacalao (P. Blanco)", "200 g patata", "80 g tomate natural tamizado"],
+        "cena": ["200 g pollo", "60 g canónigos", "40 g tomates cherry"]
+      },
+      {
+        "comida": ["100 g jamón cocido o lacón", "40 g aguacate", "60 g canónigos", "40 g tomates cherry"],
+        "cena": ["250 g lubina (P. Semigraso)", "300 ml crema de espinacas"]
+      },
+      {
+        "comida": ["200 g garbanzos cocidos", "1 lata atún natural", "150 g mango"],
+        "cena": ["2 huevos (tortilla)", "300 ml puré de calabacín"]
+      },
+      {
+        "comida": ["200 g lomo de cerdo", "40 g aguacate", "60 g lechuga", "40 g tomates cherry"],
+        "cena": ["300 ml crema de champiñones", "200 g sepia"]
+      },
+      {
+        "comida": ["COMIDA LIBRE"],
+        "cena": ["250 g merluza (P. Blanco)", "200 g espárragos blancos"]
+      }
+    ],
+    "compra": {
+      "Proteínas": [
+        {"n": "Pavo", "q": "200 g"},
+        {"n": "Hamburguesa ternera", "q": "200 g"},
+        {"n": "Pollo", "q": "200 g"},
+        {"n": "Lomo de cerdo", "q": "200 g"},
+        {"n": "Atún fresco/azul", "q": "180 g"},
+        {"n": "Bacalao", "q": "250 g"},
+        {"n": "Lubina", "q": "250 g"},
+        {"n": "Merluza", "q": "250 g"},
+        {"n": "Sepia", "q": "200 g"},
+        {"n": "Gambas", "q": "200 g"},
+        {"n": "Jamón cocido/Lacón", "q": "100 g"}
+      ],
+      "Verduras": [
+        {"n": "Canónigos/Lechuga", "q": "2 bolsas"},
+        {"n": "Tomates cherry", "q": "300 g"},
+        {"n": "Brócoli", "q": "250 g"},
+        {"n": "Setas", "q": "200 g"},
+        {"n": "Verduras para crema", "q": "1.2 kg"}
+      ],
+      "Frutas": [
+        {"n": "Mango", "q": "150 g"},
+        {"n": "Aguacate", "q": "2 uds"}
+      ],
+      "Carbohidratos y Despensa": [
+        {"n": "Noodles de arroz", "q": "60 g"},
+        {"n": "Pasta integral", "q": "60 g"},
+        {"n": "Patata", "q": "200 g"},
+        {"n": "Garbanzos cocidos", "q": "200 g"},
+        {"n": "Huevos", "q": "4 uds"}
+      ]
     }
-  ],
-  "compra": {
-    "Proteínas": [
-      {"n": "Pavo", "q": "200 g"},
-      {"n": "Hamburguesa ternera", "q": "200 g"},
-      {"n": "Pollo", "q": "200 g"},
-      {"n": "Lomo de cerdo", "q": "200 g"},
-      {"n": "Atún fresco/azul", "q": "180 g"},
-      {"n": "Bacalao", "q": "250 g"},
-      {"n": "Lubina", "q": "250 g"},
-      {"n": "Lenguado", "q": "250 g"},
-      {"n": "Sepia", "q": "200 g"},
-      {"n": "Gambas", "q": "200 g"},
-      {"n": "Atún natural (lata)", "q": "1 ud"},
-      {"n": "Jamón cocido/Lacón", "q": "100 g"}
-    ],
-    "Verduras": [
-      {"n": "Canónigos/Lechuga", "q": "2 bolsas"},
-      {"n": "Tomates cherry", "q": "200 g"},
-      {"n": "Brócoli", "q": "250 g"},
-      {"n": "Verduras salteadas", "q": "250 g"},
-      {"n": "Verduras para crema", "q": "1.2 kg"}
-    ],
-    "Frutas": [
-      {"n": "Mango", "q": "150 g"},
-      {"n": "Aguacate", "q": "2 uds"}
-    ],
-    "Carbohidratos y Despensa": [
-      {"n": "Noodles de arroz", "q": "60 g"},
-      {"n": "Pasta integral", "q": "60 g"},
-      {"n": "Patata", "q": "200 g"},
-      {"n": "Garbanzos cocidos", "q": "200 g"},
-      {"n": "Huevos", "q": "4 uds"}
-    ]
   }
-}
