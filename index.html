@@ -599,20 +599,37 @@ function renderCompra() {
 function renderPaso1(el, meta) {
   const items = allCompraItems();
   const marcados = items.filter(it => noTengo[it.key]).length;
+
+  // Agrupar por lineal
+  const grouped = {};
+  LINEALES.forEach(l => grouped[l] = []);
+  items.forEach(it => {
+    const lineal = clasificarLineal(it.n);
+    grouped[lineal].push(it);
+  });
+
+  let listHtml = '';
+  LINEALES.forEach(lineal => {
+    const its = grouped[lineal];
+    if (!its.length) return;
+    listHtml += `<div class="cat-card">
+      <div class="cat-label">${lineal}</div>
+      ${its.map(it => `
+        <div class="c-item ${noTengo[it.key] ? 'nt-on' : ''}" onclick="toggleNoTengo('${it.key}',this)">
+          <div class="c-box"><span class="c-check-icon">✓</span></div>
+          <div class="c-name">${it.n}</div>
+          <div class="c-qty">${it.q}</div>
+        </div>`).join('')}
+    </div>`;
+  });
+
   el.innerHTML = `
     <div class="section-head">
       <div class="section-title">¿Qué te falta?</div>
       <div class="count-pill">${meta.label}</div>
     </div>
     <p style="color:var(--muted);font-size:13px;margin:0 0 16px">Marca lo que <strong style="color:var(--text)">no tienes</strong> en casa</p>
-    <div id="paso1-list">
-    ${items.map(it => `
-      <div class="c-item ${noTengo[it.key] ? 'nt-on' : ''}" onclick="toggleNoTengo('${it.key}',this)">
-        <div class="c-box"><span class="c-check-icon">✓</span></div>
-        <div class="c-name">${it.n}</div>
-        <div class="c-qty">${it.q}</div>
-      </div>`).join('')}
-    </div>
+    <div id="paso1-list">${listHtml}</div>
     <button class="compra-cta" onclick="irAPaso2()">
       Generar lista de la compra${marcados > 0 ? ` (${marcados})` : ''}
     </button>`;
