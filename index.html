@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -200,39 +201,31 @@
   /* ── Mi lista (vista filtrada) ── */
   .mi-lista-empty { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; }
 
-  /* Mi lista — negro salmon */
-  .mi-lista-mode .add-item-form {
-    background: #080A0F;
-    border: 1.5px solid rgba(242,157,162,.35);
+  /* Paso 1: marcado "no tengo" */
+  .c-item.nt-on { background: rgba(242,157,162,.12); }
+  .c-item.nt-on .c-box { background: var(--salmon); border-color: var(--salmon); }
+  .c-item.nt-on .c-check-icon { opacity: 1; }
+  .c-item.nt-on .c-name { color: var(--salmon); }
+
+  /* Botón generar lista */
+  .compra-cta {
+    display: block; width: 100%; margin: 20px 0 8px;
+    background: var(--salmon); color: #1a1d2e;
+    border: none; border-radius: 14px;
+    font-family: inherit; font-size: 15px; font-weight: 700;
+    padding: 16px; cursor: pointer;
+    transition: filter .2s;
   }
-  .mi-lista-mode .add-item-form .form-title { color: #F29DA2; }
-  .mi-lista-mode .add-item-form .add-input {
-    background: #0D0F14;
-    border-color: rgba(242,157,162,.2);
+  .compra-cta:active { filter: brightness(.9); }
+
+  /* Botón eliminar extra */
+  .del-extra {
+    background: none; border: none; color: var(--muted);
+    font-size: 13px; cursor: pointer; padding: 4px 6px;
+    margin-left: auto; flex-shrink: 0;
   }
-  .mi-lista-mode .add-item-form .add-select {
-    background: #0D0F14;
-    border-color: rgba(242,157,162,.2);
-  }
-  .mi-lista-mode .add-item-form .add-btn {
-    background: #F29DA2;
-    color: #1a1d2e;
-  }
-  .mi-lista-mode .cat-card {
-    background: #080A0F;
-    border: 1.5px solid rgba(242,157,162,.2);
-  }
-  .mi-lista-mode .cat-label {
-    background: #0D0F14;
-    color: #F29DA2;
-    border-bottom-color: rgba(242,157,162,.12);
-  }
-  .mi-lista-mode .c-item {
-    border-bottom-color: rgba(242,157,162,.08);
-  }
-  .mi-lista-mode .c-box {
-    border-color: rgba(242,157,162,.3);
-  }
+  .del-extra:active { color: var(--salmon); }
+
 
   /* ── Loading ── */
   .loading { display: flex; align-items: center; justify-content: center; padding: 60px 20px; color: var(--muted); font-size: 14px; gap: 10px; }
@@ -302,45 +295,7 @@
 </div>
 
 <div id="v-compra" class="view">
-  <div class="section-head">
-    <div class="section-title">Compra</div>
-    <div class="count-pill" id="compra-badge"></div>
-  </div>
-
-  <!-- Toolbar: toggle vista + reset -->
-  <div class="compra-toolbar">
-    <div class="view-toggle">
-      <button class="vt-btn on" id="vt-all" onclick="setCompraView('all')">Todo</button>
-      <button class="vt-btn"    id="vt-list" onclick="setCompraView('list')">Mi lista</button>
-    </div>
-    <button class="reset-btn" onclick="resetCompra()">↺ Eliminar lista</button>
-  </div>
-
-  <!-- Añadir producto extra -->
-  <div class="add-item-form">
-    <div class="form-title">Añadir producto</div>
-    <div class="add-row">
-      <input class="add-input" id="add-name" type="text" placeholder="Nombre del producto" onkeydown="if(event.key==='Enter')addExtra()">
-      <input class="add-input qty" id="add-qty" type="text" placeholder="Cantidad" onkeydown="if(event.key==='Enter')addExtra()">
-    </div>
-    <div class="add-row">
-      <select class="add-select" id="add-cat">
-        <option value="Proteínas">Proteínas</option>
-        <option value="Huevos y lácteos">Huevos y lácteos</option>
-        <option value="Verduras">Verduras</option>
-        <option value="Frutas">Frutas</option>
-        <option value="Carbohidratos">Carbohidratos</option>
-        <option value="Grasas y extras">Grasas y extras</option>
-        <option value="Legumbres">Legumbres</option>
-        <option value="Bebidas">Bebidas</option>
-        <option value="Limpieza">Limpieza</option>
-        <option value="Otros">Otros</option>
-      </select>
-      <button class="add-btn" onclick="addExtra()">+ Añadir</button>
-    </div>
-  </div>
-
-  <div id="compra-list"></div>
+  <div id="compra-inner"></div>
 </div>
 
 <div id="v-info" class="view">
@@ -392,31 +347,101 @@ const DESAYUNO = {
   entreno:  ["3 Wasa Sesam","40 g aguacate","100 g pavo cocido","Batido: 250 ml zumo naranja + 100 g plátano + 100 g yogur griego"],
   descanso: ["Café o té","2 tortitas de maíz o pan tipo Wasa","2 rodajas de tomate","40 g aguacate","1 huevo revuelto","1 fruta"]
 };
-const ALL_CATS = ["Proteínas","Huevos y lácteos","Verduras","Frutas","Carbohidratos","Grasas y extras","Legumbres","Bebidas","Limpieza","Otros"];
+const LINEALES = ["Carnes","Pescados","Congelados","Huevos y lácteos","Fruta y verdura","Despensa","Otros"];
+
+// Diccionario de clasificación automática por lineal
+const LINEAL_MAP = {
+  // Carnes
+  "pollo":"Carnes","pavo":"Carnes","ternera":"Carnes","cerdo":"Carnes","lomo":"Carnes",
+  "solomillo":"Carnes","jamón":"Carnes","jamon":"Carnes","lacón":"Carnes","lacon":"Carnes",
+  "hamburguesa":"Carnes","carne":"Carnes","pechuga":"Carnes","contramuslo":"Carnes",
+  // Pescados
+  "merluza":"Pescados","salmón":"Pescados","salmon":"Pescados","bacalao":"Pescados",
+  "gambas":"Pescados","gamba":"Pescados","sepia":"Pescados","atún":"Pescados","atun":"Pescados",
+  "pescado":"Pescados","sardina":"Pescados","boquerón":"Pescados","boqueron":"Pescados",
+  "anchoa":"Pescados","caballa":"Pescados","dorada":"Pescados","lubina":"Pescados",
+  "trucha":"Pescados","pulpo":"Pescados","mejillón":"Pescados","mejillon":"Pescados",
+  "calamar":"Pescados","rape":"Pescados","rodaballo":"Pescados","lenguado":"Pescados",
+  "cazón":"Pescados","cazon":"Pescados","besugo":"Pescados","mero":"Pescados",
+  "abadejo":"Pescados","pescadilla":"Pescados","fletán":"Pescados","fletan":"Pescados",
+  // Huevos y lácteos
+  "huevo":"Huevos y lácteos","huevos":"Huevos y lácteos","mozzarella":"Huevos y lácteos",
+  "queso":"Huevos y lácteos","yogur":"Huevos y lácteos","cottage":"Huevos y lácteos",
+  "leche":"Huevos y lácteos","parmesano":"Huevos y lácteos","mantequilla":"Huevos y lácteos",
+  "kéfir":"Huevos y lácteos","nata":"Huevos y lácteos",
+  // Fruta y verdura
+  "mango":"Fruta y verdura","plátano":"Fruta y verdura","platano":"Fruta y verdura",
+  "naranja":"Fruta y verdura","manzana":"Fruta y verdura","pera":"Fruta y verdura",
+  "kiwi":"Fruta y verdura","fresa":"Fruta y verdura","sandía":"Fruta y verdura",
+  "sandia":"Fruta y verdura","melón":"Fruta y verdura","melon":"Fruta y verdura",
+  "piña":"Fruta y verdura","pina":"Fruta y verdura","cereza":"Fruta y verdura",
+  "uva":"Fruta y verdura","arándano":"Fruta y verdura","arandano":"Fruta y verdura",
+  "frambuesa":"Fruta y verdura","melocotón":"Fruta y verdura","melocoton":"Fruta y verdura",
+  "brócoli":"Fruta y verdura","brocoli":"Fruta y verdura","calabacín":"Fruta y verdura",
+  "calabacin":"Fruta y verdura","espinaca":"Fruta y verdura","espinacas":"Fruta y verdura",
+  "tomate":"Fruta y verdura","cebolla":"Fruta y verdura","pimiento":"Fruta y verdura",
+  "lechuga":"Fruta y verdura","rúcula":"Fruta y verdura","rucula":"Fruta y verdura",
+  "canónigos":"Fruta y verdura","canonigos":"Fruta y verdura","zanahoria":"Fruta y verdura",
+  "berenjena":"Fruta y verdura","calabaza":"Fruta y verdura","espárrago":"Fruta y verdura",
+  "esparrago":"Fruta y verdura","judía":"Fruta y verdura","judia":"Fruta y verdura",
+  "alcachofa":"Fruta y verdura","acelga":"Fruta y verdura","puerro":"Fruta y verdura",
+  "coliflor":"Fruta y verdura","champiñón":"Fruta y verdura","champinon":"Fruta y verdura",
+  "champiñones":"Fruta y verdura","seta":"Fruta y verdura","aguacate":"Fruta y verdura",
+  "cherry":"Fruta y verdura","cherrys":"Fruta y verdura","maíz":"Fruta y verdura",
+  "maiz":"Fruta y verdura","patata":"Fruta y verdura","pisto":"Fruta y verdura",
+  "verdura":"Fruta y verdura","fruta":"Fruta y verdura","mix de verduras":"Fruta y verdura",
+  // Despensa
+  "arroz":"Despensa","pasta":"Despensa","noodles":"Despensa","wasa":"Despensa",
+  "tortita":"Despensa","couscous":"Despensa","avena":"Despensa","pan":"Despensa",
+  "lenteja":"Despensa","lentejas":"Despensa","garbanzo":"Despensa","garbanzos":"Despensa",
+  "alubia":"Despensa","judía blanca":"Despensa","aove":"Despensa","aceite":"Despensa",
+  "tomate frito":"Despensa","caldo":"Despensa","consomé":"Despensa","consome":"Despensa",
+  "soja":"Despensa","sésamo":"Despensa","sesamo":"Despensa","pimentón":"Despensa",
+  "pimenton":"Despensa","frutos secos":"Despensa","almendra":"Despensa",
+  "nuez":"Despensa","anacardo":"Despensa","pistacho":"Despensa","cacahuete":"Despensa",
+  "avellana":"Despensa","vinagre":"Despensa","mostaza":"Despensa","sal":"Despensa",
+  "pimienta":"Despensa","ajo":"Despensa","especias":"Despensa","limón":"Despensa",
+  "limon":"Despensa"
+};
+
+function clasificarLineal(nombre) {
+  const n = nombre.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // quitar acentos
+  // Prioridad: congelado
+  if (/congelad[ao]s?/.test(n)) return "Congelados";
+  // Buscar en el mapa
+  for (const [key, lineal] of Object.entries(LINEAL_MAP)) {
+    const k = key.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    if (n.includes(k)) return lineal;
+  }
+  return "Otros";
+}
 
 let menuIndex = [];
 let currentMenuId = null;
 let currentMenu = null;
 let dayTypes = {};
-let checked = {};
-let listChecked = {};
-let extras = {};   // extras[cat] = [{n, q, id}]
-let compraView = 'all'; // 'all' | 'list'
+// noTengo[key] = true → marcado para comprar en paso 1
+let noTengo = {};
+// comprado[key] = true → marcado como comprado en paso 2
+let comprado = {};
+let extras = [];   // [{n, q, id}]
+let compraStep = 1; // 1 = revisar nevera | 2 = lista de compra
 let sheetIdx = null;
 
-// ── Persistence ──
 function loadState() {
   try {
-    const s = JSON.parse(localStorage.getItem('alvnut_v3') || '{}');
+    const s = JSON.parse(localStorage.getItem('alvnut_v4') || '{}');
     if (s.currentMenuId) currentMenuId = s.currentMenuId;
     if (s.dayTypes)      dayTypes      = s.dayTypes;
-    if (s.checked)       checked       = s.checked;
-    if (s.listChecked)   listChecked   = s.listChecked;
+    if (s.noTengo)       noTengo       = s.noTengo;
+    if (s.comprado)      comprado      = s.comprado;
     if (s.extras)        extras        = s.extras;
+    if (s.compraStep)    compraStep    = s.compraStep;
   } catch(e) {}
 }
 function save() {
-  localStorage.setItem('alvnut_v3', JSON.stringify({ currentMenuId, dayTypes, checked, listChecked, extras }));
+  localStorage.setItem('alvnut_v4', JSON.stringify({ currentMenuId, dayTypes, noTengo, comprado, extras, compraStep }));
 }
 
 function todayIndex() {
@@ -552,90 +577,126 @@ function selectType(tipo) {
 }
 
 // ── Compra ──
-function setCompraView(v) {
-  compraView = v;
-  document.getElementById('vt-all').classList.toggle('on', v === 'all');
-  document.getElementById('vt-list').classList.toggle('on', v === 'list');
-  renderCompra();
+function allCompraItems() {
+  if (!currentMenu || !currentMenu.compra) return [];
+  const items = [];
+  Object.entries(currentMenu.compra).forEach(([cat, arr]) => {
+    arr.forEach((it, idx) => {
+      items.push({ key: `${currentMenuId}_${cat}_${idx}`, n: it.n, q: it.q || '' });
+    });
+  });
+  return items;
 }
 
 function renderCompra() {
   if (!currentMenu) return;
   const meta = menuIndex.find(m => m.id === currentMenuId);
-  document.getElementById('compra-badge').textContent = meta.label;
-  // Apply mi-lista-mode styling
-  const compraEl = document.getElementById('v-compra');
-  compraEl.classList.toggle('mi-lista-mode', compraView === 'list');
+  const el = document.getElementById('compra-inner');
+  if (compraStep === 1) renderPaso1(el, meta);
+  else renderPaso2(el, meta);
+}
 
-  // Combinar items del menú con extras
-  // Estructura: { cat: [{n, q, key, isExtra, extraId}] }
-  const allItems = {};
-  ALL_CATS.forEach(cat => { allItems[cat] = []; });
+function renderPaso1(el, meta) {
+  const items = allCompraItems();
+  const marcados = items.filter(it => noTengo[it.key]).length;
+  el.innerHTML = `
+    <div class="section-head">
+      <div class="section-title">¿Qué te falta?</div>
+      <div class="count-pill">${meta.label}</div>
+    </div>
+    <p style="color:var(--muted);font-size:13px;margin:0 0 16px">Marca lo que <strong style="color:var(--text)">no tienes</strong> en casa</p>
+    <div id="paso1-list">
+    ${items.map(it => `
+      <div class="c-item ${noTengo[it.key] ? 'nt-on' : ''}" onclick="toggleNoTengo('${it.key}',this)">
+        <div class="c-box"><span class="c-check-icon">✓</span></div>
+        <div class="c-name">${it.n}</div>
+        <div class="c-qty">${it.q}</div>
+      </div>`).join('')}
+    </div>
+    <button class="compra-cta" onclick="irAPaso2()">
+      Generar lista de la compra${marcados > 0 ? ` (${marcados})` : ''}
+    </button>`;
+}
 
-  // Items del menú
-  Object.entries(currentMenu.compra).forEach(([cat, items]) => {
-    items.forEach((it, idx) => {
-      const key = `${currentMenuId}_${cat}_${idx}`;
-      allItems[cat] = allItems[cat] || [];
-      allItems[cat].push({ n: it.n, q: it.q, key, isExtra: false, listChecked: !!listChecked[key] });
-    });
+function renderPaso2(el, meta) {
+  const grouped = {};
+  LINEALES.forEach(l => grouped[l] = []);
+
+  allCompraItems().filter(it => noTengo[it.key]).forEach(it => {
+    const lineal = clasificarLineal(it.n);
+    grouped[lineal].push({ ...it, isExtra: false });
+  });
+  extras.forEach(it => {
+    const lineal = clasificarLineal(it.n);
+    grouped[lineal].push({ key: `extra_${it.id}`, n: it.n, q: it.q, isExtra: true, extraId: it.id });
   });
 
-  // Extras (persistentes, no ligados a semana)
-  Object.entries(extras).forEach(([cat, items]) => {
-    items.forEach(it => {
-      const key = `extra_${it.id}`;
-      allItems[cat] = allItems[cat] || [];
-      allItems[cat].push({ n: it.n, q: it.q, key, isExtra: true, extraId: it.id, listChecked: !!listChecked[key] });
-    });
-  });
-
-  // Filtrar según vista
-  let html = '';
-  ALL_CATS.forEach(cat => {
-    let items = allItems[cat] || [];
-    if (compraView === 'list') {
-      // En Mi lista: mostrar extras siempre + items del menú marcados
-      items = items.filter(it => it.isExtra || !!checked[it.key]);
-    }
-    if (items.length === 0) return;
-    html += `<div class="cat-card">
-      <div class="cat-label">${cat}</div>
-      ${items.map(it => {
-        const isDone = compraView === 'list' ? !!it.listChecked : !!checked[it.key];
-        return `
-        <div class="c-item ${isDone ? 'done' : ''}" onclick="toggleItem('${it.key}',this,'${compraView}')">
+  let listHtml = '';
+  LINEALES.forEach(lineal => {
+    const items = grouped[lineal];
+    if (!items.length) return;
+    listHtml += `<div class="cat-card">
+      <div class="cat-label">${lineal}</div>
+      ${items.map(it => `
+        <div class="c-item ${comprado[it.key] ? 'done' : ''}" onclick="toggleComprado('${it.key}',this)">
           <div class="c-box"><span class="c-check-icon">✓</span></div>
           <div class="c-name">${it.n}</div>
-          <div class="c-qty">${it.q !== '—' ? it.q : ''}</div>
-
-        </div>`;
-      }).join('')}
+          <div class="c-qty">${it.q}</div>
+          ${it.isExtra ? `<button class="del-extra" onclick="deleteExtra('${it.extraId}',event)">✕</button>` : ''}
+        </div>`).join('')}
     </div>`;
   });
 
-  if (compraView === 'list' && html === '') {
-    html = '<div class="mi-lista-empty">Marca productos en "Todo" para verlos aquí</div>';
-  }
+  if (!listHtml) listHtml = '<div class="mi-lista-empty">No hay productos en la lista</div>';
 
-  document.getElementById('compra-list').innerHTML = html;
+  el.innerHTML = `
+    <div class="section-head">
+      <div class="section-title">Lista de la compra</div>
+      <div class="count-pill">${meta.label}</div>
+    </div>
+    <div class="compra-toolbar">
+      <button class="reset-btn" onclick="resetCompra()">↺ Nueva compra</button>
+    </div>
+    <div class="add-item-form">
+      <div class="form-title" style="color:var(--salmon)">Añadir producto</div>
+      <div class="add-row">
+        <input class="add-input" id="add-name" type="text" placeholder="Nombre del producto" onkeydown="if(event.key==='Enter')addExtra()">
+        <input class="add-input qty" id="add-qty" type="text" placeholder="Cantidad" onkeydown="if(event.key==='Enter')addExtra()">
+      </div>
+      <div class="add-row" style="justify-content:flex-end">
+        <button class="add-btn" onclick="addExtra()">+ Añadir</button>
+      </div>
+    </div>
+    <div id="paso2-list">${listHtml}</div>`;
 }
 
-function toggleItem(key, el, view) {
-  if (view === 'list') {
-    listChecked[key] = !listChecked[key];
-    el.classList.toggle('done', listChecked[key]);
-  } else {
-    checked[key] = !checked[key];
-    el.classList.toggle('done', checked[key]);
-  }
+function toggleNoTengo(key, el) {
+  noTengo[key] = !noTengo[key];
+  el.classList.toggle('nt-on', noTengo[key]);
+  const items = allCompraItems();
+  const marcados = items.filter(it => noTengo[it.key]).length;
+  const cta = document.querySelector('.compra-cta');
+  if (cta) cta.textContent = `Generar lista de la compra${marcados > 0 ? ` (${marcados})` : ''}`;
   save();
 }
 
+function toggleComprado(key, el) {
+  comprado[key] = !comprado[key];
+  el.classList.toggle('done', comprado[key]);
+  save();
+}
+
+function irAPaso2() {
+  compraStep = 2;
+  save();
+  renderCompra();
+}
+
 function resetCompra() {
-  Object.keys(checked).forEach(k => { delete checked[k]; });
-  Object.keys(listChecked).forEach(k => { delete listChecked[k]; });
-  extras = {};
+  noTengo = {};
+  comprado = {};
+  extras = [];
+  compraStep = 1;
   save();
   renderCompra();
 }
@@ -644,24 +705,20 @@ function resetCompra() {
 function addExtra() {
   const nameEl = document.getElementById('add-name');
   const qtyEl  = document.getElementById('add-qty');
-  const catEl  = document.getElementById('add-cat');
   const n = nameEl.value.trim();
   const q = qtyEl.value.trim() || '—';
-  const cat = catEl.value;
   if (!n) { nameEl.focus(); return; }
-  if (!extras[cat]) extras[cat] = [];
-  extras[cat].push({ n, q, id: String(Date.now()) });
+  extras.push({ n, q, id: String(Date.now()) });
   nameEl.value = ''; qtyEl.value = '';
   nameEl.focus();
   save();
   renderCompra();
 }
 
-function deleteExtra(id, cat, e) {
+function deleteExtra(id, e) {
   e.stopPropagation();
-  if (extras[cat]) extras[cat] = extras[cat].filter(it => String(it.id) !== String(id));
-  const key = `extra_${id}`;
-  delete checked[key];
+  extras = extras.filter(it => String(it.id) !== String(id));
+  delete comprado[`extra_${id}`];
   save();
   renderCompra();
 }
