@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!-- saved from url=(0043)file:///Users/alvaro/Downloads/index_1.html -->
 <html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -476,7 +475,7 @@ async function loadMenu(id) {
   try {
     const res = await fetch(meta.file);
     currentMenu = await res.json();
-    dayTypes[id] = [...currentMenu.types];
+    if (!dayTypes[id]) dayTypes[id] = [...currentMenu.types];
     renderSemana();
     renderCompra();
   } catch(e) {
